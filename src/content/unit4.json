@@ -1,0 +1,154 @@
+{
+  "id": 4,
+  "title": "工作上的用法",
+  "lessons": [
+    {
+      "id": "u4l1",
+      "title": "整理會議記錄",
+      "free": false,
+      "imagePrompt": "a middle-aged Asian office worker sitting at a desk with a laptop, a messy pile of papers on one side turning into a neat short checklist on the other side, the small round white robot guide with a teal antenna in the middle sorting the papers",
+      "paragraphs": [
+        "開完會要寫會議記錄，是很多上班族最頭痛的事。你可以把筆記或錄音轉成的文字貼給 AI，請它整理成重點。",
+        "最實用的問法是：「請整理成三個部分：討論重點、決議事項、待辦事項（誰、做什麼、什麼時候前）」。這樣整理出來的東西，直接就能寄給同事。",
+        "AI 整理完，一定要自己對過一遍。它可能把兩個人的話搞混，或漏掉你覺得重要的事。"
+      ],
+      "example": "你把一小時會議的筆記貼上，請 AI 整理。它列出：決議「下個月起改用新的請款單」，待辦「小林在 15 號前把新表格發給各部門」。你檢查沒問題，直接寄出。",
+      "interaction": {
+        "type": "chat",
+        "title": "看 AI 怎麼整理",
+        "intro": "點下面的按鈕，看 AI 把一段雜亂的筆記整理成會議記錄。",
+        "turns": [
+          {
+            "question": "整理這段筆記：老王說下個月請款單要改，小林說表格她來做大概 15 號，主管說要先給財務看，另外尾牙場地還沒定，阿美會再問兩家",
+            "answer": "【決議】下個月起改用新版請款單，上線前先給財務部確認。\n【待辦】小林：15 號前完成新表格。阿美：再詢問兩家尾牙場地。\n【未決】尾牙場地。",
+            "followUp": { "question": "改成可以直接寄出的 Email", "answer": "各位好，以下為今日會議重點：1. 下月起改用新版請款單，上線前請財務部確認。2. 小林將於 15 號前完成新表格。3. 尾牙場地由阿美再詢問兩家後回報。謝謝大家！" }
+          }
+        ],
+        "note": "這是示範對話，不是真的 AI。"
+      },
+      "quiz": {
+        "question": "請 AI 整理會議記錄，哪個指示最有用？",
+        "options": ["幫我整理", "整理成討論重點、決議、待辦事項（誰做什麼、何時完成）", "寫得越長越好"],
+        "answer": 1,
+        "explanation": "給它清楚的格式，整理出來就能直接用。"
+      }
+    },
+    {
+      "id": "u4l2",
+      "title": "寫 Email 和報告",
+      "free": false,
+      "imagePrompt": "a middle-aged Asian woman at an office desk confidently pressing send on a laptop, a paper airplane envelope flying out of the screen, the small round white robot guide with a teal antenna cheering beside the laptop",
+      "paragraphs": [
+        "寫給客戶或主管的 Email，常常卡在「怎麼說比較得體」。你可以先用自己的話把重點講出來，再請 AI 改成正式的版本。",
+        "例如：「幫我寫給客戶的 Email，說貨要晚一週到，原因是原料缺貨，語氣要誠懇，並提出可以先寄一半的方案」。",
+        "報告也一樣：你提供數字和重點，請 AI 幫你排成段落、寫開頭和結論。數字一定要自己核對，AI 偶爾會算錯或寫錯。"
+      ],
+      "example": "你只寫下「貨晚一週、原料缺、可以先寄一半」，AI 就幫你寫成一封有道歉、有說明、有替代方案的完整 Email，你改兩個字就能寄出。",
+      "interaction": {
+        "type": "pickBetter",
+        "title": "哪個指示寫得出好 Email？",
+        "intro": "選出比較容易得到可以直接寄出的 Email 的指示。",
+        "rounds": [
+          {
+            "situation": "要通知客戶延後交貨",
+            "options": [
+              { "text": "寫延後交貨的信", "good": false },
+              { "text": "寫給老客戶的 Email：貨晚一週，因為原料缺貨，語氣誠懇，提出可以先寄一半", "good": true }
+            ],
+            "explain": "對象、原因、語氣和替代方案都講了，AI 寫出來幾乎不用改。"
+          },
+          {
+            "situation": "要跟主管請假",
+            "options": [
+              { "text": "幫我寫請假訊息給主管，下週三要陪媽媽回診，工作已交代給小陳，簡短有禮貌", "good": true },
+              { "text": "請假", "good": false }
+            ],
+            "explain": "哪天、原因、工作怎麼安排都說清楚，主管看了最放心。"
+          }
+        ],
+        "outro": "你負責重點，AI 負責措辭，數字自己核對。"
+      },
+      "quiz": {
+        "question": "用 AI 寫報告時，哪件事一定要自己做？",
+        "options": ["想標題", "核對數字", "排版"],
+        "answer": 1,
+        "explanation": "AI 偶爾會寫錯或算錯數字，報告裡的數字一定要自己核對。"
+      }
+    },
+    {
+      "id": "u4l3",
+      "title": "翻譯",
+      "free": false,
+      "imagePrompt": "two cheerful speech bubbles in different colors connected by a bridge, the small round white robot guide with a teal antenna standing on the bridge carrying a small envelope, a middle-aged Asian man on one side and a foreign business partner on the other side waving at each other",
+      "paragraphs": [
+        "AI 翻譯比以前的翻譯軟體自然很多，而且可以指定語氣，例如「翻成英文，語氣要像商業往來，不要太口語」。",
+        "它也可以反過來幫你：外國客戶的信看不懂，貼給 AI 請它翻成中文，並說明「對方真正想表達什麼」。",
+        "重要的文件可以用「反向翻譯」檢查：請 AI 把它翻好的英文再翻回中文，看看意思有沒有跑掉。合約這類文件，還是要請專業翻譯。"
+      ],
+      "example": "日本客戶來信說「検討させていただきます」，翻譯軟體翻成「我們會研究」。你問 AI 對方真正的意思，它會提醒你：在日本商業習慣裡，這常常是委婉的拒絕。",
+      "interaction": {
+        "type": "pickBetter",
+        "title": "哪個翻譯指示比較好？",
+        "intro": "選出比較能得到合用翻譯的指示。",
+        "rounds": [
+          {
+            "situation": "要回信給國外客戶",
+            "options": [
+              { "text": "翻成英文", "good": false },
+              { "text": "翻成英文，對象是合作十年的美國客戶，語氣專業但親切", "good": true }
+            ],
+            "explain": "說明對象和語氣，翻出來才不會太生硬或太隨便。"
+          },
+          {
+            "situation": "看不懂客戶的回信",
+            "options": [
+              { "text": "翻成中文，並告訴我對方是答應還是拒絕、我下一步該怎麼回", "good": true },
+              { "text": "翻譯", "good": false }
+            ],
+            "explain": "不只翻字面，還請 AI 說明言外之意和建議，更有幫助。"
+          }
+        ],
+        "outro": "重要文件用反向翻譯檢查，合約請專業翻譯。"
+      },
+      "quiz": {
+        "question": "想檢查 AI 翻譯得對不對，可以怎麼做？",
+        "options": ["請它把翻好的再翻回中文，看意思有沒有變", "看字數一不一樣", "沒辦法檢查"],
+        "answer": 0,
+        "explanation": "反向翻譯是簡單又有效的檢查方法。"
+      }
+    },
+    {
+      "id": "u4l4",
+      "title": "長文摘要，但公司機密別亂貼",
+      "free": false,
+      "imagePrompt": "a very long paper scroll being folded into a small neat card by the small round white robot guide with a teal antenna, a middle-aged Asian office worker holding a small padlock symbol and nodding, office background",
+      "paragraphs": [
+        "很長的公文、報告、新聞，可以請 AI 摘要成重點：「請用五點列出重點，每點一句話」。忙碌的時候很省時間。",
+        "但貼給 AI 的內容，可能被存在對方公司的伺服器上。客戶名單、公司財務、還沒公開的計畫、員工個資，都不要貼到個人的 AI 帳號。",
+        "很多公司有自己規定能用哪些 AI 工具。上班要用之前，先問清楚公司的規定。"
+      ],
+      "example": "你想請 AI 整理一份「下季度裁員名單和薪資」的報告，這就不能貼。換成公開的「勞基法修法新聞」請它摘要，就完全沒問題。",
+      "interaction": {
+        "type": "sort",
+        "title": "可以貼給 AI 嗎？",
+        "intro": "判斷這些內容適不適合貼到個人的 AI 帳號。",
+        "bins": ["可以貼", "不要貼"],
+        "cards": [
+          { "text": "公開的新聞報導", "bin": 0, "reason": "本來就是公開資訊" },
+          { "text": "客戶的姓名電話名單", "bin": 1, "reason": "客戶個資外流可能違法" },
+          { "text": "自己寫的 Email 草稿（沒有機密）", "bin": 0, "reason": "請 AI 潤飾很適合" },
+          { "text": "公司還沒公開的新產品計畫", "bin": 1, "reason": "商業機密不要貼到外部服務" },
+          { "text": "政府公開的法規條文", "bin": 0, "reason": "公開資料，可以請 AI 解釋" },
+          { "text": "同事的薪資表", "bin": 1, "reason": "員工個資和薪資都是機密" }
+        ],
+        "outro": "公開的放心貼，機密的不要貼，不確定就先問公司。"
+      },
+      "quiz": {
+        "question": "下面哪一個「不適合」貼給 AI 摘要？",
+        "options": ["報紙上的財經新聞", "公司的客戶名單", "公開的政府公告"],
+        "answer": 1,
+        "explanation": "客戶名單包含個資，也是公司機密，不要貼給外部的 AI。"
+      }
+    }
+  ]
+}

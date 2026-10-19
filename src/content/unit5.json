@@ -1,0 +1,268 @@
+{
+  "id": 5,
+  "title": "小心不要上當",
+  "lessons": [
+    {
+      "id": "u5l1",
+      "title": "AI 會「一本正經地亂講」",
+      "free": false,
+      "imagePrompt": "the small round white robot guide with a teal antenna standing confidently at a podium giving a speech, but its speech bubble contains a mix of check marks and one funny upside-down symbol, a middle-aged Asian woman in the audience raising her hand with a gentle questioning look",
+      "paragraphs": [
+        "第 1 單元說過，AI 是用「猜」的方式回答。所以它有時會編出不存在的事，而且講得頭頭是道，這種情況叫做「AI 幻覺」。",
+        "最容易出錯的是：人名、日期、數字、法律條文、書名、店家資訊、醫療用藥。這些都是「錯了會有麻煩」的事。",
+        "三個檢查方法：第一，問它「你的資料來源是什麼？」。第二，重要的事到官方網站查證。第三，同一個問題換個方式再問一次，答案不一樣就要小心。"
+      ],
+      "example": "林阿姨問 AI「勞保老年年金怎麼請領」，AI 回答得很完整，還附了一個電話號碼。林阿姨打過去才發現是空號。正確做法是到勞保局官方網站確認電話和流程。",
+      "interaction": {
+        "type": "tapReveal",
+        "title": "哪些內容要再查證？",
+        "intro": "AI 回答了下面這些內容，請點出你覺得「一定要再查證」的，再按「看答案」。",
+        "items": [
+          {
+            "label": "某條法律的條號和罰款金額",
+            "emoji": "⚖️",
+            "correct": true,
+            "reveal": "法條和金額常出錯，要查全國法規資料庫"
+          },
+          {
+            "label": "幫你想的生日祝福",
+            "emoji": "🎂",
+            "correct": false,
+            "reveal": "沒有對錯，喜歡就用"
+          },
+          {
+            "label": "藥物的建議劑量",
+            "emoji": "💊",
+            "correct": true,
+            "reveal": "劑量一定要問醫師或藥師"
+          },
+          {
+            "label": "某家餐廳的營業時間",
+            "emoji": "🕘",
+            "correct": true,
+            "reveal": "可能是舊資料，要看店家官方資訊"
+          },
+          {
+            "label": "旅遊景點的介紹文字",
+            "emoji": "🏞️",
+            "correct": false,
+            "reveal": "大致參考就好，風險低"
+          },
+          {
+            "label": "政府機關的電話號碼",
+            "emoji": "☎️",
+            "correct": true,
+            "reveal": "電話可能是編的，要上官方網站確認"
+          }
+        ],
+        "outro": "錯了會有麻煩的事，一定要查證。"
+      },
+      "quiz": {
+        "question": "AI 給你一個政府機關的電話號碼，最好怎麼做？",
+        "options": [
+          "直接打",
+          "到該機關的官方網站確認號碼",
+          "請 AI 保證號碼正確"
+        ],
+        "answer": 1,
+        "explanation": "AI 可能編出不存在的號碼，就算它說「保證正確」也一樣，要上官方網站確認。"
+      }
+    },
+    {
+      "id": "u5l2",
+      "title": "假聲音、假影片詐騙",
+      "free": false,
+      "imagePrompt": "a middle-aged Asian woman holding a smartphone to her ear with a cautious expression, a shadowy cartoon mask floating near the phone, the small round white robot guide with a teal antenna holding up a large shield with a check mark to protect her, not scary, gentle colors",
+      "paragraphs": [
+        "現在的 AI 只要幾秒鐘的錄音，就能模仿一個人的聲音；只要幾張照片，就能做出這個人在說話的假影片。詐騙集團已經在用這些技術。",
+        "常見手法有兩種：一是假冒兒女或孫子打電話，哭著說出車禍、被抓，急著要錢。二是名人、醫師的假影片，推薦投資、保健食品，叫你加 LINE。",
+        "防範的三個方法：第一，接到要錢的電話，先掛掉，自己撥家人原本的號碼確認。第二，和家人約好一個「家庭暗號」，只有自己人知道。第三，有疑問就打 165 反詐騙專線。"
+      ],
+      "example": "王媽媽接到「兒子」的電話，聲音一模一樣，說撞到人要和解金 20 萬。王媽媽想起課程教的，說「我等一下打給你」，掛掉後撥兒子的手機，兒子正在公司上班，什麼事都沒有。",
+      "interaction": {
+        "type": "pickBetter",
+        "title": "遇到這種電話，你會怎麼做？",
+        "intro": "模擬幾個常見的詐騙情境，選出最安全的做法。",
+        "rounds": [
+          {
+            "situation": "電話裡「兒子」哭著說：「媽，我出車禍了，對方要 20 萬，不要告訴爸爸！」",
+            "options": [
+              {
+                "text": "趕快去銀行匯款",
+                "good": false
+              },
+              {
+                "text": "先掛掉，自己撥兒子原本的手機號碼確認",
+                "good": true
+              }
+            ],
+            "explain": "聲音可以被 AI 模仿，自己撥原本的號碼最可靠。「不要告訴別人」正是詐騙常用的話。"
+          },
+          {
+            "situation": "臉書上看到知名醫師的影片，說「加 LINE 免費領降血糖祕方」",
+            "options": [
+              {
+                "text": "不加，影片可能是 AI 做的假影片",
+                "good": true
+              },
+              {
+                "text": "醫師都出來講了，加 LINE 看看",
+                "good": false
+              }
+            ],
+            "explain": "名人推薦影片很容易用 AI 造假。正牌醫師不會叫你加 LINE 領祕方。"
+          },
+          {
+            "situation": "「孫子」打來說手機壞了換新號碼，要你先幫忙付一筆錢",
+            "options": [
+              {
+                "text": "問他「我們家的暗號是什麼？」",
+                "good": true
+              },
+              {
+                "text": "聲音很像，應該是他",
+                "good": false
+              }
+            ],
+            "explain": "家庭暗號是 AI 模仿不了的。答不出來就是假的。"
+          }
+        ],
+        "outro": "先掛掉、再回撥、問暗號，有疑問打 165。"
+      },
+      "quiz": {
+        "question": "接到家人打來急著要錢的電話，聲音一模一樣，第一步該做什麼？",
+        "options": [
+          "聲音一樣就放心匯款",
+          "掛掉後自己撥家人原本的號碼確認",
+          "請對方傳照片證明"
+        ],
+        "answer": 1,
+        "explanation": "AI 可以模仿聲音，照片也能造假。自己撥原本的號碼確認最可靠。"
+      }
+    },
+    {
+      "id": "u5l3",
+      "title": "哪些個資不該給 AI",
+      "free": false,
+      "imagePrompt": "a cozy wooden treasure chest with a lock, labeled with simple icons of an ID card, a key and a bank card, the small round white robot guide with a teal antenna politely holding up its hands saying no, a middle-aged Asian man smiling and keeping the chest closed",
+      "paragraphs": [
+        "你跟 AI 說的話，可能被保存在對方公司的伺服器上，有些服務還會拿來改進 AI。所以要把 AI 當成「不熟的人」：好用，但不要什麼都說。",
+        "絕對不要給 AI 的：身分證字號、銀行帳號和密碼、信用卡號、網路銀行和各種 App 的密碼、手機收到的驗證碼。",
+        "要小心的：有姓名的病歷、家人的照片和住址、別人的個資。需要問的話，把名字和號碼拿掉，換成「我先生」、「某醫院」就可以了。"
+      ],
+      "example": "你想請 AI 幫忙寫一封給銀行的申訴信，不需要把帳號打進去。寫「我的帳戶」就好，信寫好後，帳號再自己填上。",
+      "interaction": {
+        "type": "sort",
+        "title": "可以告訴 AI 嗎？",
+        "intro": "判斷每一項資料能不能告訴 AI。",
+        "bins": [
+          "可以說",
+          "不要說"
+        ],
+        "cards": [
+          {
+            "text": "我最近睡不好，有什麼方法",
+            "bin": 0,
+            "reason": "一般問題，沒有個資"
+          },
+          {
+            "text": "手機收到的 6 位數驗證碼",
+            "bin": 1,
+            "reason": "驗證碼等於鑰匙，給誰都不行"
+          },
+          {
+            "text": "我的身分證字號",
+            "bin": 1,
+            "reason": "可能被拿去冒用身分"
+          },
+          {
+            "text": "幫我想孫子的生日禮物，他 8 歲喜歡恐龍",
+            "bin": 0,
+            "reason": "不需要姓名，沒有風險"
+          },
+          {
+            "text": "網路銀行的密碼",
+            "bin": 1,
+            "reason": "密碼不要告訴任何人或 AI"
+          },
+          {
+            "text": "我先生血壓高，晚餐怎麼煮",
+            "bin": 0,
+            "reason": "沒有姓名和病歷號碼，可以問"
+          }
+        ],
+        "outro": "把 AI 當不熟的人：好用，但密碼和證件不給。"
+      },
+      "quiz": {
+        "question": "下面哪一個絕對不能告訴 AI？",
+        "options": [
+          "想學的料理名稱",
+          "手機收到的驗證碼",
+          "喜歡的旅遊地點"
+        ],
+        "answer": 1,
+        "explanation": "驗證碼是登入帳號的鑰匙，給了別人帳號就可能被盜。"
+      }
+    },
+    {
+      "id": "u5l4",
+      "title": "教爸媽和朋友防詐",
+      "free": false,
+      "imagePrompt": "a warm family scene: a middle-aged Asian woman showing her elderly parents something on a smartphone at a dining table, everyone smiling, the small round white robot guide with a teal antenna holding a small heart, soft evening light",
+      "paragraphs": [
+        "學會之後，最有價值的事是教身邊的人。長輩和朋友不一定會上課，但會聽你說。",
+        "教的時候不用講技術，只要記住三句話：「要錢的電話先掛掉再回撥」、「名人叫你加 LINE 的都是假的」、「有疑問打 165」。",
+        "今天就可以做一件事：和家人約一個家庭暗號，例如「小時候養的狗叫什麼名字」。這個暗號 AI 猜不到，詐騙集團也查不到。"
+      ],
+      "example": "張大哥上完課，在家族 LINE 群組分享了一張「AI 詐騙三句話」的小卡片，還跟爸媽約好暗號。三個月後，他媽媽真的接到假冒他的電話，一問暗號，對方就掛了。",
+      "interaction": {
+        "type": "tapReveal",
+        "title": "找出詐騙訊息的破綻",
+        "intro": "下面是一則 LINE 上收到的訊息裡的句子，請點出可疑的地方，再按「看答案」。",
+        "items": [
+          {
+            "label": "「知名財經老師帶你投資」",
+            "emoji": "🎤",
+            "correct": true,
+            "reveal": "冒用名人是最常見的手法"
+          },
+          {
+            "label": "「保證獲利、穩賺不賠」",
+            "emoji": "💰",
+            "correct": true,
+            "reveal": "合法投資沒有保證獲利"
+          },
+          {
+            "label": "「今天天氣很好」",
+            "emoji": "☀️",
+            "correct": false,
+            "reveal": "普通的問候，不可疑"
+          },
+          {
+            "label": "「名額有限，今天截止」",
+            "emoji": "⏰",
+            "correct": true,
+            "reveal": "製造緊張，不讓你有時間想"
+          },
+          {
+            "label": "「加這個 LINE 帳號領取」",
+            "emoji": "📱",
+            "correct": true,
+            "reveal": "把你帶到私下聊天，方便行騙"
+          }
+        ],
+        "outro": "冒名人、保證賺、催你快、叫你加 LINE，看到就是詐騙。"
+      },
+      "quiz": {
+        "question": "和家人約「家庭暗號」有什麼用？",
+        "options": [
+          "讓聊天更有趣",
+          "AI 假冒聲音時，問暗號就能分辨真假",
+          "可以拿來當密碼"
+        ],
+        "answer": 1,
+        "explanation": "AI 能模仿聲音，但不知道只有家人才知道的暗號。"
+      }
+    }
+  ]
+}

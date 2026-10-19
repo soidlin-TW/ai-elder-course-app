@@ -1,0 +1,141 @@
+{
+  "id": 1,
+  "title": "AI 到底是什麼",
+  "lessons": [
+    {
+      "id": "u1l1",
+      "title": "AI 其實已經在你生活裡",
+      "free": true,
+      "imagePrompt": "a middle-aged Asian woman holding a smartphone and smiling, around the phone float four small friendly icons: a map with a route line, a video play button, a microphone, a photo album with faces, soft dotted lines connecting the icons to the phone, the small round white robot guide with a teal antenna standing beside her and pointing at the icons",
+      "paragraphs": [
+        "聽到「AI」，很多人會想到電影裡的機器人。其實你可能每天都在用 AI，只是沒人告訴你它叫這個名字。",
+        "AI 是「人工智慧」的縮寫。簡單說，就是讓電腦從大量的例子裡找出規則，然後幫你做判斷。例如：哪條路比較不塞、你可能喜歡哪支影片、這張照片裡是不是你的孫子。",
+        "過去這些 AI 都「躲在背後」。最近大家突然一直談 AI，是因為出現了一種新的 AI，可以直接用說話跟你一問一答。這是下一課的主角。"
+      ],
+      "example": "你打開 Google 地圖要去醫院，它說「平常路線塞車，建議改走這條，快 8 分鐘」。這個建議就是 AI 看了很多人的行車資料後算出來的。",
+      "interaction": {
+        "type": "tapReveal",
+        "title": "找找看哪個有 AI",
+        "intro": "下面是手機上常見的 6 個 App。請點出你覺得有用到 AI 的，再按「看答案」。",
+        "items": [
+          { "label": "地圖", "emoji": "🗺️", "correct": true, "reveal": "幫你算哪條路比較不塞" },
+          { "label": "YouTube", "emoji": "▶️", "correct": true, "reveal": "猜你接下來想看什麼" },
+          { "label": "照片", "emoji": "🖼️", "correct": true, "reveal": "自動認出同一個人的臉" },
+          { "label": "Siri", "emoji": "🎙️", "correct": true, "reveal": "聽懂你說的話" },
+          { "label": "計算機", "emoji": "🧮", "correct": false, "reveal": "只是照公式算，沒有「判斷」" },
+          { "label": "手電筒", "emoji": "🔦", "correct": false, "reveal": "按下就亮，沒有「判斷」" }
+        ],
+        "outro": "你已經是 AI 的老用戶了！"
+      },
+      "quiz": {
+        "question": "下面哪一個「不是」AI 在幫你？",
+        "options": ["YouTube 推薦你可能喜歡的影片", "手機照片自動把同一個人的照片放在一起", "你自己設定的早上 7 點鬧鐘"],
+        "answer": 2,
+        "explanation": "鬧鐘只是照你設的時間響，沒有在「判斷」任何事，所以不是 AI。"
+      }
+    },
+    {
+      "id": "u1l2",
+      "title": "會聊天的 AI 是什麼",
+      "free": true,
+      "imagePrompt": "a middle-aged Asian man sitting on a sofa at home, relaxed, looking at a large smartphone screen showing chat bubbles, the small round white robot guide with a teal antenna peeking out of the phone and waving, cup of tea on the table",
+      "paragraphs": [
+        "你聽過的 ChatGPT、Gemini、Claude，都是「聊天 AI」。用起來就像在 LINE 上跟一個很有耐心、知道很多事的朋友傳訊息。",
+        "你用平常說話的方式打字，或直接用說的，它就會回你。你可以請它幫你寫一段話、解釋一個看不懂的名詞，或幫你想週末去哪裡玩。",
+        "跟「搜尋」不同的是：Google 搜尋給你一堆網頁讓你自己看，聊天 AI 會直接整理成一段答案，而且你可以接著問「那如果是下雨天呢？」。"
+      ],
+      "example": "你對它說「幫我寫一段給媽媽 80 歲生日的祝福，要溫馨一點，不要太長」。幾秒後它就給你一段可以直接貼到 LINE 的文字；不滿意，你可以說「再輕鬆一點」。",
+      "interaction": {
+        "type": "chat",
+        "title": "試試看跟 AI 聊天",
+        "intro": "點一個問題，看看 AI 怎麼回答，再點「接著問」。",
+        "turns": [
+          {
+            "question": "幫我寫給媽媽 80 歲生日的祝福",
+            "answer": "媽，80 歲生日快樂！謝謝你一輩子的照顧，願你身體健康、天天開心。",
+            "followUp": { "question": "再輕鬆一點", "answer": "媽，生日快樂！你是我們家永遠的女王，今天要多吃一塊蛋糕喔！" }
+          },
+          {
+            "question": "「通膨」是什麼意思？",
+            "answer": "就是東西慢慢變貴，同樣 100 元能買到的東西變少了。",
+            "followUp": { "question": "舉個例子", "answer": "10 年前一個便當 70 元，現在可能要 100 元，這就是通膨。" }
+          },
+          {
+            "question": "週末台北附近可以去哪？",
+            "answer": "可以考慮淡水老街、陽明山、大稻埕碼頭，都搭捷運或公車就能到。",
+            "followUp": { "question": "那如果下雨呢？", "answer": "下雨可以去故宮、國父紀念館，或逛有屋頂的百貨公司和美術館。" }
+          }
+        ],
+        "note": "這是示範對話，不是真的 AI。"
+      },
+      "quiz": {
+        "question": "聊天 AI 跟 Google 搜尋最大的不同是什麼？",
+        "options": ["聊天 AI 不用網路", "聊天 AI 會直接整理成答案，還可以接著問", "聊天 AI 一定不會答錯"],
+        "answer": 1,
+        "explanation": "聊天 AI 需要網路，而且也會答錯（第 5 單元會教你怎麼防）。它的特點是用對話的方式給你整理好的答案。"
+      }
+    },
+    {
+      "id": "u1l3",
+      "title": "AI 怎麼學會說話",
+      "free": true,
+      "imagePrompt": "the small round white robot guide with a teal antenna sitting cross-legged on top of a huge tall stack of colorful books and newspapers, reading an open book happily, more books floating around it, cozy library feeling",
+      "paragraphs": [
+        "想像一個小孩從小聽大人說話，聽多了，就知道「早」後面常接「安」。聊天 AI 也是這樣學的，只是它「讀」的是網路上大量的文章、書和對話，多到一個人幾輩子也讀不完。",
+        "讀完之後，它學會的是一件事：猜「下一個字最可能是什麼」。它一個字一個字地猜，接起來就變成一整段通順的回答。",
+        "所以 AI 很會「說得像」，但它並不是真的「知道」。大部分時候猜得很準，偶爾也會猜錯，而且猜錯時口氣一樣很有自信。"
+      ],
+      "example": "你說「床前明月光」，你不用想就會接「疑是地上霜」，因為聽過太多次了。AI 回答問題，就是用類似的方式「接話」。",
+      "interaction": {
+        "type": "nextWord",
+        "title": "你來當一次 AI",
+        "intro": "句子還沒說完。選一個你覺得最可能的詞，長條代表 AI 覺得的可能性。",
+        "steps": [
+          { "prefix": "今天天氣很", "options": [ { "word": "熱", "p": 60 }, { "word": "好", "p": 30 }, { "word": "藍", "p": 10 } ] },
+          { "prefix": "今天天氣很熱，我想吃", "options": [ { "word": "刨冰", "p": 55 }, { "word": "西瓜", "p": 35 }, { "word": "火鍋", "p": 10 } ] },
+          { "prefix": "今天天氣很熱，我想吃刨冰，所以去了", "options": [ { "word": "冰店", "p": 70 }, { "word": "市場", "p": 25 }, { "word": "學校", "p": 5 } ] }
+        ],
+        "outro": "你剛剛做的事，就是 AI 一直在做的事。AI 偶爾也會選到怪怪的詞，這就是它會答錯的原因。"
+      },
+      "quiz": {
+        "question": "聊天 AI 是怎麼產生回答的？",
+        "options": ["有一群人在後面即時打字回你", "根據讀過的大量文字，一個字一個字猜出最可能的回答", "從一本寫好所有答案的大字典裡查"],
+        "answer": 1,
+        "explanation": "沒有真人在回你，也沒有標準答案本。它是用「猜」的，這也是它有時會答錯的原因。"
+      }
+    },
+    {
+      "id": "u1l4",
+      "title": "AI 不是什麼",
+      "free": true,
+      "imagePrompt": "the small round white robot guide with a teal antenna standing next to a friendly middle-aged Asian doctor in a white coat, the robot holding a clipboard with a neat checklist and handing it to the doctor, the doctor smiling, clinic setting with soft colors, teamwork feeling",
+      "paragraphs": [
+        "很多人對 AI 有兩種想像：一種是「它什麼都懂，說的一定對」，另一種是「它會統治人類」。這兩種都不對。",
+        "AI 不會思考，也沒有感情。它說「我了解你的難過」，是因為這句話在這種場合常出現，不是它真的難過。它也不會自己想做什麼事，你不問，它就不動。",
+        "AI 不是醫生、律師或理專。它可以幫你看懂報告、整理問題，但吃藥、簽約、投資這類大事，最後一定要問真正的專家。把 AI 當成「很會整理資料的助理」，不要當成「做決定的人」。"
+      ],
+      "example": "你問 AI「我血壓 150 要不要停藥？」。它可能會給你一些一般建議，但它不知道你的病史和吃的藥。正確的用法是：請它幫你列出「看診時要問醫生的 3 個問題」，帶去問醫生。",
+      "interaction": {
+        "type": "sort",
+        "title": "交給 AI 還是問專家？",
+        "intro": "每張卡片選一個：交給 AI 整理，還是要問專家？",
+        "bins": ["交給 AI 整理", "要問專家"],
+        "cards": [
+          { "text": "寫朋友婚禮的祝賀詞", "bin": 0, "reason": "寫錯了可以重寫，沒有風險" },
+          { "text": "要不要減少血壓藥", "bin": 1, "reason": "關係健康，醫生才知道你的狀況" },
+          { "text": "整理會議重點", "bin": 0, "reason": "你自己看一遍就能檢查" },
+          { "text": "簽房屋買賣合約", "bin": 1, "reason": "金額大、不能重來，要問地政士或律師" },
+          { "text": "規劃三天兩夜的旅遊", "bin": 0, "reason": "你可以從它的建議裡挑" },
+          { "text": "退休金要買哪支股票", "bin": 1, "reason": "AI 不知道你的財務狀況，也不為結果負責" }
+        ],
+        "outro": "可以重來的交給 AI，不能重來的問專家。"
+      },
+      "quiz": {
+        "question": "下面哪個是用 AI 比較好的方式？",
+        "options": ["照 AI 說的直接調整藥量", "請 AI 幫你整理要問醫生的問題", "AI 說「我懂你」，所以它是真的關心你"],
+        "answer": 1,
+        "explanation": "AI 是好用的助理，但不知道你的完整狀況，也沒有感情。大事交給專家，整理交給 AI。"
+      }
+    }
+  ]
+}

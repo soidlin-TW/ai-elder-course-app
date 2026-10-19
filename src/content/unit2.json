@@ -1,0 +1,243 @@
+{
+  "id": 2,
+  "title": "開始用第一個 AI",
+  "lessons": [
+    {
+      "id": "u2l1",
+      "title": "常見的聊天 AI 有哪些",
+      "free": true,
+      "imagePrompt": "the small round white robot guide with a teal antenna standing in front of four large friendly app icon tiles in different soft colors arranged in a row, like a shop window, a middle-aged Asian couple looking at them curiously",
+      "paragraphs": [
+        "現在最常見的聊天 AI 有四個：OpenAI 公司的 ChatGPT、Google 的 Gemini、Anthropic 公司的 Claude，還有微軟的 Copilot。它們都能用中文聊天，基本功能也都可以免費用。",
+        "第一次用，建議從一個開始就好，不用每個都裝。用 Android 手機的人，Gemini 常常已經內建；用 iPhone 的人，可以從 App Store 下載其中一個。",
+        "下載時一定要看「開發者」名稱。App Store 上有很多名字很像的山寨 App，會要你每週付訂閱費。官方的 ChatGPT 開發者是 OpenAI，Gemini 是 Google，Claude 是 Anthropic，Copilot 是 Microsoft。"
+      ],
+      "example": "你在 App Store 搜尋「ChatGPT」，第一個結果叫「AI 聊天機器人 - Chat 助手 Pro」，開發者是一家沒聽過的公司，還寫著「每週 NT$290」。這就不是官方的，往下找開發者寫 OpenAI 的那一個。",
+      "interaction": {
+        "type": "sort",
+        "title": "官方的還是山寨的？",
+        "intro": "看 App 的名稱和開發者，判斷它是官方 App 還是可疑的山寨 App。",
+        "bins": [
+          "官方的",
+          "可疑的"
+        ],
+        "cards": [
+          {
+            "text": "ChatGPT／開發者：OpenAI",
+            "bin": 0,
+            "reason": "開發者是 OpenAI，是官方的"
+          },
+          {
+            "text": "AI Chat 智能助手 Pro／開發者：Smart Apps Ltd／每週 NT$290",
+            "bin": 1,
+            "reason": "名字模仿、開發者不明，還有高額週訂閱"
+          },
+          {
+            "text": "Google Gemini／開發者：Google",
+            "bin": 0,
+            "reason": "開發者是 Google，是官方的"
+          },
+          {
+            "text": "Claude／開發者：Anthropic",
+            "bin": 0,
+            "reason": "開發者是 Anthropic，是官方的"
+          },
+          {
+            "text": "GPT 聊天 4o 免費版／開發者：個人帳號／一打開就要求付款",
+            "bin": 1,
+            "reason": "一打開就要錢，又不是官方開發者"
+          }
+        ],
+        "outro": "記得：先看開發者名稱，再按下載。"
+      },
+      "quiz": {
+        "question": "在 App Store 下載聊天 AI 時，最重要的是確認什麼？",
+        "options": [
+          "App 圖示好不好看",
+          "開發者是不是官方公司",
+          "評論裡有沒有人說好用"
+        ],
+        "answer": 1,
+        "explanation": "山寨 App 也可能有好看的圖示和假評論，開發者名稱最可靠。"
+      }
+    },
+    {
+      "id": "u2l2",
+      "title": "怎麼問問題最有用",
+      "free": true,
+      "imagePrompt": "the small round white robot guide with a teal antenna holding up three large colorful cards with simple symbols: a person silhouette, a target, a ruler, a middle-aged Asian woman taking notes in a notebook, classroom feeling",
+      "paragraphs": [
+        "AI 回答得好不好，很大一部分取決於你怎麼問。問得越清楚，答案就越合用。你跟 AI 說的話，有個名字叫「提示詞」。",
+        "好的問法有三個重點：第一，說清楚情況，例如「我 60 歲、膝蓋不好」。第二，說清楚你要什麼，例如「推薦三個散步的地方」。第三，說清楚要什麼樣子，例如「每個用兩句話介紹」。",
+        "不用怕寫太長，AI 不會嫌你囉嗦。把它當成新來的助理：你交代得越清楚，它做得越好。"
+      ],
+      "example": "只問「推薦晚餐」，AI 會給你一堆不一定適合的菜。改成「我和先生都有高血壓，請推薦三道少鹽、30 分鐘內做得完的晚餐，列出材料」，答案馬上合用很多。",
+      "interaction": {
+        "type": "pickBetter",
+        "title": "哪個問法比較好？",
+        "intro": "每一題有兩種問法，選出你覺得 AI 會回答得比較好的那一個。",
+        "rounds": [
+          {
+            "situation": "想找週末的散步地點",
+            "options": [
+              {
+                "text": "推薦散步的地方",
+                "good": false
+              },
+              {
+                "text": "我住台中、膝蓋不好，推薦三個平坦好走、有廁所的散步地點",
+                "good": true
+              }
+            ],
+            "explain": "說清楚住哪裡、身體狀況和需求，AI 才推薦得準。"
+          },
+          {
+            "situation": "想寫一段感謝老師的話",
+            "options": [
+              {
+                "text": "幫我寫一段感謝孫子導師的話，50 字以內，語氣真誠、不要太正式",
+                "good": true
+              },
+              {
+                "text": "寫感謝的話",
+                "good": false
+              }
+            ],
+            "explain": "告訴它寫給誰、多長、什麼語氣，就不用一直改。"
+          },
+          {
+            "situation": "看不懂水費帳單",
+            "options": [
+              {
+                "text": "水費",
+                "good": false
+              },
+              {
+                "text": "我這期水費比上期多了 400 元，可能有哪些原因？我該怎麼檢查？",
+                "good": true
+              }
+            ],
+            "explain": "把問題的來龍去脈說出來，AI 才知道你真正想問什麼。"
+          }
+        ],
+        "outro": "記住三個重點：說情況、說需求、說樣子。"
+      },
+      "quiz": {
+        "question": "下面哪一個是「好問法」的三個重點之一？",
+        "options": [
+          "越短越好",
+          "說清楚你的情況",
+          "要用英文問"
+        ],
+        "answer": 1,
+        "explanation": "說情況、說需求、說樣子。中文問就可以，也不用怕太長。"
+      }
+    },
+    {
+      "id": "u2l3",
+      "title": "問得不好怎麼重問",
+      "free": false,
+      "imagePrompt": "the small round white robot guide with a teal antenna holding a large pencil with an eraser, happily erasing and rewriting on a big sheet of paper, a middle-aged Asian man giving a thumbs up beside it",
+      "paragraphs": [
+        "第一次的答案不滿意，很正常。聊天 AI 最大的好處是可以「接著說」，不用重新開始。",
+        "常用的接話方式有：「再短一點」、「用國小學生聽得懂的話說」、「改成比較客氣的語氣」、「第二點再多說一些」、「這不是我要的，我是想問……」。",
+        "你也可以直接指出錯誤：「你說的營業時間不對，我查到是早上 9 點開」。AI 不會生氣，它會照你的意思修正。"
+      ],
+      "example": "你請 AI 解釋「定存和活存的差別」，它講了一大段術語。你接著說「太難了，用買菜的例子講」，它就會改成你聽得懂的版本。",
+      "interaction": {
+        "type": "chat",
+        "title": "練習接著問",
+        "intro": "AI 的第一個答案不太合用，點下面的按鈕，看看接話之後有什麼不同。",
+        "turns": [
+          {
+            "question": "定存和活存有什麼不同？",
+            "answer": "定期存款是約定存款期間、利率固定，提前解約會損失部分利息；活期存款可隨時存提，利率較低……",
+            "followUp": {
+              "question": "太難了，用買菜的例子講",
+              "answer": "活存像放在錢包的錢，隨時能拿去買菜；定存像先跟菜販說好一年後再拿，菜販多送你幾顆蔥，但中途要拿就沒得送。"
+            }
+          },
+          {
+            "question": "幫我寫一封跟社區管委會反映噪音的信",
+            "answer": "敬啟者：本人為本社區住戶，近期深受樓上住戶夜間噪音困擾，嚴重影響生活品質，懇請管委會儘速處理……（共 300 字）",
+            "followUp": {
+              "question": "短一點，語氣客氣一點",
+              "answer": "管委會您好：最近晚上 11 點後常聽到樓上有聲響，想麻煩協助提醒，謝謝您！"
+            }
+          }
+        ],
+        "note": "這是示範對話，不是真的 AI。"
+      },
+      "quiz": {
+        "question": "AI 的答案太長、太難懂，最好的做法是？",
+        "options": [
+          "關掉重新開一個對話",
+          "直接跟它說「短一點、用簡單的話」",
+          "放棄不用了"
+        ],
+        "answer": 1,
+        "explanation": "直接接著說就好，它記得前面聊過什麼，會照你的意思修改。"
+      }
+    },
+    {
+      "id": "u2l4",
+      "title": "免費版和付費版差在哪",
+      "free": false,
+      "imagePrompt": "the small round white robot guide with a teal antenna standing between two simple gift boxes, one small plain box and one bigger box with a ribbon, a middle-aged Asian woman thinking with her hand on her chin, calm mood",
+      "paragraphs": [
+        "幾個主要的聊天 AI 都有免費版，對日常寫訊息、問問題、查資料來說已經很夠用。建議先用免費版一兩個月，再決定要不要付費。",
+        "付費版大約每個月新台幣 600 多元（各家不同，以官方 App 顯示為準），通常可以用更聰明的版本、用得更多次、處理更長的文件。工作上天天用的人才比較需要。",
+        "付費一定要在官方 App 裡付，並記得訂閱是「自動續訂」。不想用了要到 iPhone 的「設定 → 你的名字 → 訂閱項目」取消，刪掉 App 並不會停止扣款。"
+      ],
+      "example": "陳大哥下載了一個山寨 AI App，按了「免費試用 3 天」，結果第 4 天開始每週被扣 290 元，一個月就超過一千元。刪了 App 還繼續扣，最後才知道要到設定裡取消訂閱。",
+      "interaction": {
+        "type": "tapReveal",
+        "title": "找出訂閱陷阱",
+        "intro": "下面是一個 App 的付款畫面上寫的字，請點出可能是陷阱的地方，再按「看答案」。",
+        "items": [
+          {
+            "label": "免費試用 3 天",
+            "emoji": "🎁",
+            "correct": true,
+            "reveal": "試用結束會自動開始收費，很多人忘記取消"
+          },
+          {
+            "label": "之後每週 NT$290",
+            "emoji": "💸",
+            "correct": true,
+            "reveal": "用「每週」計價讓數字看起來小，一個月其實超過一千元"
+          },
+          {
+            "label": "開發者：OpenAI",
+            "emoji": "✅",
+            "correct": false,
+            "reveal": "這是官方開發者，不是陷阱"
+          },
+          {
+            "label": "關閉按鈕很小、在角落",
+            "emoji": "✖️",
+            "correct": true,
+            "reveal": "故意讓你找不到不付錢的選項"
+          },
+          {
+            "label": "可隨時在設定中取消",
+            "emoji": "⚙️",
+            "correct": false,
+            "reveal": "這是正常說明，但要記得真的去取消"
+          }
+        ],
+        "outro": "看到「免費試用」，先想清楚之後要付多少錢、怎麼取消。"
+      },
+      "quiz": {
+        "question": "不想再用付費版了，要怎麼停止扣款？",
+        "options": [
+          "把 App 刪掉就好",
+          "到 iPhone 設定裡的「訂閱項目」取消",
+          "不要再打開 App"
+        ],
+        "answer": 1,
+        "explanation": "刪除 App 不會停止訂閱，一定要到設定裡的訂閱項目取消。"
+      }
+    }
+  ]
+}
