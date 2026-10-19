@@ -33,7 +33,7 @@ export function ShareCard({ heading, body, buttonLabel = '分享到 LINE 給家�
         <Text style={styles.emoji}>🤖</Text>
         <Text style={styles.heading}>{heading}</Text>
         <Text style={styles.body}>{body}</Text>
-        <Text style={styles.footer}>來自 App「{APP_NAME}」・中年人也學得會的 AI 課</Text>
+        <Text style={styles.footer}>來自 App「{APP_NAME}」・50+ 也學得會的 AI 課</Text>
       </View>
       <BigButton variant="secondary" label={buttonLabel} onPress={share} />
     </View>

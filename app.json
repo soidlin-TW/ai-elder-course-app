@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "AI 不難",
-    "slug": "ai-course-app",
+    "name": "AI 好朋友",
+    "slug": "ai-elder-course-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.soidlin.aicourse",
+      "bundleIdentifier": "com.soidlin.aieldercourse",
       "config": {
         "usesNonExemptEncryption": false
       }
@@ -21,7 +21,7 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.soidlin.aicourse"
+      "package": "com.soidlin.aieldercourse"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,7 +31,7 @@
       "expo-sharing",
       "expo-iap"
     ],
-    "scheme": "aicourse",
+    "scheme": "aieldercourse",
     "experiments": {
       "typedRoutes": true
     },

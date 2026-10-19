@@ -1,4 +1,4 @@
-# AI 不難（暫定名稱）
+# AI 好朋友：50+ 也學得會的大字好讀入門課
 
 教中年人認識 AI 的 iPhone 課程 App。Expo（React Native）＋ Expo Router，在 Windows 上就能開發，用 EAS 雲端編譯並上傳 App Store，不需要 Mac。
 
@@ -33,7 +33,7 @@ eas submit --platform ios                       # 上傳到 App Store Connect
 
 | 檔案 | 項目 |
 | --- | --- |
-| `app.json` | `name`、`ios.bundleIdentifier`、`android.package`（目前是 `com.soidlin.aicourse`） |
+| `app.json` | `name`、`ios.bundleIdentifier`、`android.package`（目前是 `com.soidlin.aieldercourse`） |
 | `src/lib/config.ts` | App 名稱、講師名字、內購產品 ID、隱私權政策網址、客服信箱 |
 | `assets/` | App 圖示（1024×1024）、啟動畫面 |
 | `src/content/images.ts` | 加入用 Krita 生成的課程插圖 |
