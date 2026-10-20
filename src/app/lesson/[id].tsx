@@ -14,6 +14,7 @@ import { ShareCard } from '@/components/ShareCard';
 import { BigButton, Card, StickyFooter, T } from '@/components/ui';
 import { allLessons, findLesson, nextLessonId, takeaway, units } from '@/content';
 import { FadeIn, PressableScale } from '@/lib/motion';
+import { feedback } from '@/lib/feedback';
 import { speak, stopSpeaking } from '@/lib/speech';
 import { useStore } from '@/lib/store';
 import { colors, radius, unitThemes } from '@/lib/theme';
@@ -66,6 +67,7 @@ export default function LessonScreen() {
   const finish = async () => {
     store.markCompleted(lesson.id);
     go('done');
+    feedback('complete');
     // Ask for a rating once, right after the free unit 1 is finished, when goodwill is highest.
     const unit1Done = units[0].lessons.every((l) => l.id === lesson.id || store.completed[l.id]);
     if (unit.id === 1 && unit1Done && !store.reviewRequested) {

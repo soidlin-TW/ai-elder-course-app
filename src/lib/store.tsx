@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setSoundEnabled } from './feedback';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
 const STORAGE_KEY = 'app-state-v1';
@@ -12,6 +13,7 @@ type PersistedState = {
   unlocked: boolean;
   fontScale: FontScale;
   speechRate: SpeechRate;
+  soundOn: boolean;
   reviewRequested: boolean;
   missionsDone: Record<string, true>;
   familyQuestion: string;
@@ -25,6 +27,7 @@ const initialState: PersistedState = {
   unlocked: false,
   fontScale: 1.2,
   speechRate: 0.8,
+  soundOn: true,
   reviewRequested: false,
   missionsDone: {},
   familyQuestion: '',
@@ -38,6 +41,7 @@ type Store = PersistedState & {
   setUnlocked: (unlocked: boolean) => void;
   setFontScale: (scale: FontScale) => void;
   setSpeechRate: (rate: SpeechRate) => void;
+  setSoundOn: (on: boolean) => void;
   setReviewRequested: () => void;
   toggleMission: (key: string) => void;
   setFamilyQuestion: (q: string) => void;
@@ -67,6 +71,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     if (ready) AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(state)).catch(() => {});
   }, [state, ready]);
 
+  useEffect(() => setSoundEnabled(state.soundOn), [state.soundOn]);
+
   const update = useCallback((patch: Partial<PersistedState> | ((s: PersistedState) => Partial<PersistedState>)) => {
     setState((s) => ({ ...s, ...(typeof patch === 'function' ? patch(s) : patch) }));
   }, []);
@@ -80,6 +86,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       setUnlocked: (unlocked) => update({ unlocked }),
       setFontScale: (fontScale) => update({ fontScale }),
       setSpeechRate: (speechRate) => update({ speechRate }),
+      setSoundOn: (soundOn) => update({ soundOn }),
       setReviewRequested: () => update({ reviewRequested: true }),
       toggleMission: (key) =>
         update((s) => {

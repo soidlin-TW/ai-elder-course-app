@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useMemo, useState, type ReactNode
 import { Alert } from 'react-native';
 
 import { FALLBACK_PRICE, UNLOCK_PRODUCT_ID } from './config';
+import { feedback } from './feedback';
 import { useStore } from './store';
 
 type Purchase = {
@@ -33,6 +34,7 @@ function StorePurchaseProvider({ children }: { children: ReactNode }) {
       onPurchaseSuccess: async (purchase) => {
         if (purchase.productId === UNLOCK_PRODUCT_ID) {
           setUnlocked(true);
+          feedback('complete');
           await finishTransaction({ purchase, isConsumable: false });
         }
         setBusy(false);

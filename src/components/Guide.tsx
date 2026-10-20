@@ -3,31 +3,47 @@ import { StyleSheet, View } from 'react-native';
 import { Robot, type RobotMood } from './Robot';
 import { T } from './ui';
 import { GUIDE_NAME } from '@/lib/config';
-import { FadeIn } from '@/lib/motion';
+import { FadeIn, PressableScale } from '@/lib/motion';
+import { speak } from '@/lib/speech';
+import { useStore } from '@/lib/store';
 import { colors, radius, shadow } from '@/lib/theme';
 
-/** 小智 with a speech bubble. */
+/** 小智 with a speech bubble; tap it to hear 小智 say the line. */
 export function Guide({ says, mood = 'happy' }: { says: string; mood?: RobotMood }) {
+  const { speechRate } = useStore();
   return (
     <FadeIn>
-      <View style={styles.row} accessible accessibilityLabel={`${GUIDE_NAME}說：${says}`}>
+      <PressableScale
+        style={styles.row}
+        haptic={false}
+        accessibilityRole="button"
+        accessibilityLabel={`${GUIDE_NAME}說：${says}`}
+        accessibilityHint="點兩下聽小智唸出來"
+        onPress={() => speak(says, speechRate)}
+      >
         <View style={styles.avatar}>
           <Robot size={52} mood={mood} />
         </View>
         <View style={styles.bubble}>
           <View style={styles.tail} />
-          <T size="small" bold color={colors.primaryDark}>
-            {GUIDE_NAME}
-          </T>
+          <View style={styles.head}>
+            <T size="small" bold color={colors.primaryDark}>
+              {GUIDE_NAME}
+            </T>
+            <T size="small" color={colors.muted}>
+              🔊 點我聽
+            </T>
+          </View>
           <T>{says}</T>
         </View>
-      </View>
+      </PressableScale>
     </FadeIn>
   );
 }
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'flex-start', gap: 12 },
+  head: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   avatar: {
     width: 60,
     height: 60,

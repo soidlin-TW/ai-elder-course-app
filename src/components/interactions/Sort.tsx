@@ -1,9 +1,9 @@
-import * as Haptics from 'expo-haptics';
 import { useState } from 'react';
 import { Animated, StyleSheet, View } from 'react-native';
 
 import { Guide } from '../Guide';
 import { Bar, BigButton, Card, T } from '../ui';
+import { feedback } from '@/lib/feedback';
 import { FadeIn, useShake } from '@/lib/motion';
 import type { SortInteraction } from '@/content';
 import { colors } from '@/lib/theme';
@@ -20,7 +20,7 @@ export function Sort({ data, onDone }: { data: SortInteraction; onDone: () => vo
 
   const choose = (bin: number) => {
     const right = bin === card.bin;
-    Haptics.notificationAsync(right ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning).catch(() => {});
+    feedback(right ? 'correct' : 'retry');
     if (right) setScore((s) => s + 1);
     else setMisses((n) => n + 1);
     setAnswer(bin);

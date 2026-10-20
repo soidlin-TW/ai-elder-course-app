@@ -1,4 +1,3 @@
-import * as Haptics from 'expo-haptics';
 import { useState } from 'react';
 import { View } from 'react-native';
 
@@ -6,6 +5,7 @@ import { Guide } from '../Guide';
 import { OptionCard } from '../OptionCard';
 import { BigButton, Card, Pill, T } from '../ui';
 import type { PickBetterInteraction } from '@/content';
+import { feedback } from '@/lib/feedback';
 import { FadeIn } from '@/lib/motion';
 import { colors } from '@/lib/theme';
 
@@ -31,7 +31,7 @@ export function PickBetter({ data, onDone }: { data: PickBetterInteraction; onDo
   const choose = (i: number) => {
     if (picked != null) return;
     const good = r.options[i].good;
-    Haptics.notificationAsync(good ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning).catch(() => {});
+    feedback(good ? 'correct' : 'retry');
     if (good) setScore((s) => s + 1);
     setPicked(i);
   };

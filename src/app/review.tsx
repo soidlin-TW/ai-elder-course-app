@@ -8,6 +8,7 @@ import { QuizView } from '@/components/QuizView';
 import { Robot } from '@/components/Robot';
 import { Bar, BigButton, Card, T } from '@/components/ui';
 import { allLessons } from '@/content';
+import { feedback } from '@/lib/feedback';
 import { FadeIn } from '@/lib/motion';
 import { dayKey, useStore } from '@/lib/store';
 import { colors } from '@/lib/theme';
@@ -79,7 +80,10 @@ export default function Review() {
           quiz={lesson.quiz}
           doneLabel={i + 1 < today.length ? '下一題' : '完成今天的複習'}
           onDone={() => {
-            if (i + 1 >= today.length) finishReview();
+            if (i + 1 >= today.length) {
+              finishReview();
+              feedback('complete');
+            }
             setI((n) => n + 1);
           }}
         />

@@ -1,5 +1,4 @@
 import * as Clipboard from 'expo-clipboard';
-import * as Haptics from 'expo-haptics';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { ScrollView, Share, StyleSheet, Text, View } from 'react-native';
@@ -7,6 +6,7 @@ import { ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 import { LockedHint } from '@/components/LockedHint';
 import { BigButton, Card, T } from '@/components/ui';
 import { isFreePrompt, promptCategories, type PromptItem } from '@/content/extras';
+import { feedback } from '@/lib/feedback';
 import { FadeIn } from '@/lib/motion';
 import { useStore } from '@/lib/store';
 import { colors, radius } from '@/lib/theme';
@@ -33,7 +33,7 @@ function PromptCard({ item }: { item: PromptItem }) {
   const [copied, setCopied] = useState(false);
   const copy = async () => {
     await Clipboard.setStringAsync(item.text);
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+    feedback('tap');
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };

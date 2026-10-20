@@ -1,4 +1,3 @@
-import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
@@ -8,6 +7,7 @@ import { Guide } from '@/components/Guide';
 import { LockedHint } from '@/components/LockedHint';
 import { Bar, BigButton, Card, T } from '@/components/ui';
 import { FREE_SCENARIOS, scamKit } from '@/content/extras';
+import { feedback } from '@/lib/feedback';
 import { FadeIn } from '@/lib/motion';
 import { useStore } from '@/lib/store';
 import { colors } from '@/lib/theme';
@@ -51,7 +51,7 @@ export default function ScamQuiz() {
   const choose = (scam: boolean) => {
     if (answer != null) return;
     const ok = scam === s.scam;
-    Haptics.notificationAsync(ok ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning).catch(() => {});
+    feedback(ok ? 'correct' : 'retry');
     if (ok) setScore((n) => n + 1);
     setAnswer(scam);
   };

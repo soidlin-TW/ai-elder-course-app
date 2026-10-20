@@ -1,4 +1,3 @@
-import * as Haptics from 'expo-haptics';
 import { useState } from 'react';
 import { Animated, View } from 'react-native';
 
@@ -6,6 +5,7 @@ import { Guide } from './Guide';
 import { OptionCard, type OptionState } from './OptionCard';
 import { BigButton, Card, T } from './ui';
 import type { Quiz } from '@/content';
+import { feedback } from '@/lib/feedback';
 import { useShake } from '@/lib/motion';
 
 export function QuizView({ quiz, onDone, doneLabel = '完成這一課' }: { quiz: Quiz; onDone: () => void; doneLabel?: string }) {
@@ -17,7 +17,7 @@ export function QuizView({ quiz, onDone, doneLabel = '完成這一課' }: { quiz
   const choose = (i: number) => {
     if (right) return;
     const ok = i === quiz.answer;
-    Haptics.notificationAsync(ok ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning).catch(() => {});
+    feedback(ok ? 'correct' : 'retry');
     if (!ok) setMisses((n) => n + 1);
     setPicked(i);
   };

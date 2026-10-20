@@ -1,5 +1,6 @@
 import Constants from 'expo-constants';
 import * as Linking from 'expo-linking';
+import { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Robot } from '@/components/Robot';
@@ -7,7 +8,8 @@ import { BigButton, Card, T } from '@/components/ui';
 import { APP_NAME, GUIDE_NAME, PRIVACY_URL, SUPPORT_EMAIL } from '@/lib/config';
 import { PressableScale } from '@/lib/motion';
 import { usePurchase } from '@/lib/purchase';
-import { speak } from '@/lib/speech';
+import { feedback } from '@/lib/feedback';
+import { pickVoice, speak } from '@/lib/speech';
 import { useStore, type FontScale, type SpeechRate } from '@/lib/store';
 import { colors, radius } from '@/lib/theme';
 
@@ -46,8 +48,12 @@ function Row({ icon, label, onPress }: { icon: string; label: string; onPress: (
 }
 
 export default function Settings() {
-  const { fontScale, setFontScale, speechRate, setSpeechRate, unlocked } = useStore();
+  const { fontScale, setFontScale, speechRate, setSpeechRate, soundOn, setSoundOn, unlocked } = useStore();
   const { restore, busy } = usePurchase();
+  const [enhanced, setEnhanced] = useState(true);
+  useEffect(() => {
+    if (process.env.EXPO_OS === 'ios') pickVoice().then((v) => setEnhanced(v.enhanced));
+  }, []);
 
   return (
     <ScrollView contentContainerStyle={styles.page}>
@@ -83,7 +89,35 @@ export default function Settings() {
           }}
         />
         <T size="small" color={colors.muted}>
-          點一下就會試聽。
+          點一下就會試聽。課文裡點小智的對話框，也會唸給你聽。
+        </T>
+        {!enhanced && (
+          <View style={styles.tip}>
+            <T size="small" bold>
+              💡 想要更自然的聲音？
+            </T>
+            <T size="small">
+              打開 iPhone 的「設定」→「輔助使用」→「朗讀內容」→「聲音」→「中文（台灣）」，下載「美佳（增強版）」。免費，下載後回來就會自動使用。
+            </T>
+          </View>
+        )}
+      </Card>
+
+      <Card style={{ gap: 14 }}>
+        <T bold>音效</T>
+        <Choice<boolean>
+          options={[
+            { label: '🔔 開', value: true },
+            { label: '🔕 關', value: false },
+          ]}
+          value={soundOn}
+          onChange={(on) => {
+            setSoundOn(on);
+            if (on) setTimeout(() => feedback('correct'), 50);
+          }}
+        />
+        <T size="small" color={colors.muted}>
+          答對、完成一課時會有輕輕的提示音。手機切到靜音時不會發出聲音。
         </T>
       </Card>
 
@@ -122,5 +156,6 @@ const styles = StyleSheet.create({
   choiceOn: { backgroundColor: colors.primary },
   preview: { flexDirection: 'row', alignItems: 'center', gap: 10, backgroundColor: colors.primarySoft, borderRadius: radius - 4, padding: 12 },
   row: { flexDirection: 'row', alignItems: 'center', gap: 12, minHeight: 56 },
+  tip: { gap: 6, backgroundColor: colors.goldSoft, borderRadius: radius - 4, padding: 12 },
   sep: { height: StyleSheet.hairlineWidth, backgroundColor: colors.border, marginLeft: 34 },
 });

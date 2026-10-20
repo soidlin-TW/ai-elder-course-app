@@ -1,10 +1,10 @@
-import * as Haptics from 'expo-haptics';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { Guide } from '../Guide';
 import { BigButton, T } from '../ui';
 import type { TapRevealInteraction } from '@/content';
+import { feedback } from '@/lib/feedback';
 import { PressableScale } from '@/lib/motion';
 import { colors, radius, shadow } from '@/lib/theme';
 
@@ -61,7 +61,7 @@ export function TapReveal({ data, onDone }: { data: TapRevealInteraction; onDone
           label={count === 0 ? '先點選上面的卡片' : `選好了（${count} 個），看答案`}
           disabled={count === 0}
           onPress={() => {
-            Haptics.notificationAsync(allRight ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning).catch(() => {});
+            feedback(allRight ? 'correct' : 'retry');
             setRevealed(true);
           }}
         />
