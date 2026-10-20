@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { Robot } from '../Robot';
 import { BigButton, T } from '../ui';
+import { FadeIn } from '@/lib/motion';
 import type { ChatInteraction } from '@/content';
-import { colors, radius } from '@/lib/theme';
+import { colors, radius, shadow } from '@/lib/theme';
 
 type Message = { from: 'me' | 'ai'; text: string };
 
@@ -55,13 +57,19 @@ export function Chat({ data, onDone }: { data: ChatInteraction; onDone: () => vo
       <T>{data.intro}</T>
       <View style={styles.chat}>
         {messages.map((m, i) => (
-          <View key={i} style={[styles.bubble, m.from === 'me' ? styles.me : styles.ai]}>
-            <T color={m.from === 'me' ? '#fff' : colors.text}>{m.text}</T>
-          </View>
+          <FadeIn key={i} style={[styles.line, m.from === 'me' && { justifyContent: 'flex-end' }]}>
+            {m.from === 'ai' && <Robot size={36} blink={false} />}
+            <View style={[styles.bubble, m.from === 'me' ? styles.me : styles.ai]}>
+              <T color={m.from === 'me' ? '#fff' : colors.text}>{m.text}</T>
+            </View>
+          </FadeIn>
         ))}
         {busy && (
-          <View style={[styles.bubble, styles.ai]}>
-            <T>{typing!.slice(0, shown) + '▍'}</T>
+          <View style={styles.line}>
+            <Robot size={36} mood="think" blink={false} />
+            <View style={[styles.bubble, styles.ai]}>
+              <T>{shown === 0 ? '…' : typing!.slice(0, shown) + '▍'}</T>
+            </View>
           </View>
         )}
         {messages.length === 0 && !busy && (
@@ -71,12 +79,12 @@ export function Chat({ data, onDone }: { data: ChatInteraction; onDone: () => vo
         )}
       </View>
       {!busy && stage === 'followUp' && turn != null && (
-        <BigButton variant="secondary" label={`接著問：${data.turns[turn].followUp.question}`} onPress={followUp} />
+        <BigButton variant="secondary" icon="💬" label={`接著問：${data.turns[turn].followUp.question}`} onPress={followUp} />
       )}
       {!busy && stage !== 'followUp' && (
         <View style={{ gap: 10 }}>
           {data.turns.map((t, i) => (
-            <BigButton key={t.question} variant="secondary" label={t.question} onPress={() => pick(i)} />
+            <BigButton key={t.question} variant="secondary" icon="🙋" label={t.question} onPress={() => pick(i)} />
           ))}
         </View>
       )}
@@ -90,14 +98,15 @@ export function Chat({ data, onDone }: { data: ChatInteraction; onDone: () => vo
 
 const styles = StyleSheet.create({
   chat: {
-    backgroundColor: '#EEF3F2',
+    backgroundColor: '#EAF2F1',
     borderRadius: radius,
     padding: 12,
     gap: 10,
     minHeight: 160,
     justifyContent: 'flex-end',
   },
-  bubble: { maxWidth: '85%', borderRadius: radius, paddingHorizontal: 14, paddingVertical: 10 },
-  me: { alignSelf: 'flex-end', backgroundColor: colors.primary },
-  ai: { alignSelf: 'flex-start', backgroundColor: colors.card },
+  line: { flexDirection: 'row', alignItems: 'flex-end', gap: 8 },
+  bubble: { maxWidth: '82%', borderRadius: radius, paddingHorizontal: 14, paddingVertical: 10 },
+  me: { backgroundColor: colors.primary, borderBottomRightRadius: 6 },
+  ai: { backgroundColor: colors.card, borderBottomLeftRadius: 6, flexShrink: 1, ...shadow(1) },
 });

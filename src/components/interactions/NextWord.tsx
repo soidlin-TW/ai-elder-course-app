@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Guide } from '../Guide';
 import { BigButton, T } from '../ui';
 import type { NextWordInteraction } from '@/content';
-import { colors, radius } from '@/lib/theme';
+import { PressableScale } from '@/lib/motion';
+import { colors, radius, shadow } from '@/lib/theme';
 
 export function NextWord({ data, onDone }: { data: NextWordInteraction; onDone: () => void }) {
   const [step, setStep] = useState(0);
@@ -26,15 +27,15 @@ export function NextWord({ data, onDone }: { data: NextWordInteraction; onDone: 
     <View style={{ gap: 16 }}>
       <T>{data.intro}</T>
       <View style={styles.sentence}>
-        <T size="large" bold>
+        <T size="large" bold color="#fff">
           {sentence}
-          {!finished && '＿＿'}
+          <T size="large" bold color={colors.glow}>{!finished && '＿＿'}</T>
         </T>
       </View>
       {note && <T size="small" color={colors.muted}>{note}</T>}
       {!finished &&
         data.steps[step].options.map((o) => (
-          <Pressable key={o.word} accessibilityRole="button" onPress={() => choose(o.word)} style={styles.option}>
+          <PressableScale key={o.word} accessibilityRole="button" onPress={() => choose(o.word)} style={styles.option}>
             <T bold style={{ width: 64 }}>
               {o.word}
             </T>
@@ -44,11 +45,11 @@ export function NextWord({ data, onDone }: { data: NextWordInteraction; onDone: 
             <T size="small" color={colors.muted} style={{ width: 48, textAlign: 'right' }}>
               {o.p}%
             </T>
-          </Pressable>
+          </PressableScale>
         ))}
       {finished && (
         <>
-          <Guide says={data.outro} />
+          <Guide mood="cheer" says={data.outro} />
           <BigButton label="下一步" onPress={onDone} />
         </>
       )}
@@ -57,7 +58,7 @@ export function NextWord({ data, onDone }: { data: NextWordInteraction; onDone: 
 }
 
 const styles = StyleSheet.create({
-  sentence: { backgroundColor: colors.card, borderRadius: radius, padding: 16, borderWidth: 1, borderColor: colors.border },
+  sentence: { backgroundColor: colors.screen, borderRadius: radius, padding: 18 },
   option: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -66,8 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.card,
     borderRadius: radius,
     paddingHorizontal: 16,
-    borderWidth: 1,
-    borderColor: colors.border,
+    ...shadow(1),
   },
   track: { flex: 1, height: 14, borderRadius: 7, backgroundColor: colors.primarySoft, overflow: 'hidden' },
   bar: { height: '100%', backgroundColor: colors.primary },

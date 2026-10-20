@@ -1,103 +1,183 @@
-import { Link, router } from 'expo-router';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { Guide } from '@/components/Guide';
-import { BigButton, Card, T } from '@/components/ui';
+import { ProgressRing } from '@/components/ProgressRing';
+import { Robot } from '@/components/Robot';
+import { Bar, BigButton, Card, Pill, T } from '@/components/ui';
 import { allLessons, findLesson, units } from '@/content';
-import { APP_NAME } from '@/lib/config';
+import { APP_NAME, GUIDE_NAME } from '@/lib/config';
+import { FadeIn, Float, PressableScale } from '@/lib/motion';
+import { usePurchase } from '@/lib/purchase';
 import { useStore } from '@/lib/store';
-import { colors, radius } from '@/lib/theme';
+import { colors, heroGradient, radius, shadow, unitThemes } from '@/lib/theme';
+
+function greeting() {
+  const h = new Date().getHours();
+  return h < 11 ? '早安' : h < 18 ? '午安' : '晚安';
+}
 
 export default function Home() {
   const insets = useSafeAreaInsets();
   const { ready, completed, lastLessonId, unlocked } = useStore();
+  const { price } = usePurchase();
   if (!ready) return null;
 
   const doneCount = allLessons.filter((l) => completed[l.id]).length;
   const firstUndone = allLessons.find((l) => !completed[l.id]);
-  const resume = lastLessonId && !completed[lastLessonId] ? findLesson(lastLessonId)?.lesson : firstUndone;
+  const resumeId = lastLessonId && !completed[lastLessonId] ? lastLessonId : firstUndone?.id;
+  const resume = resumeId ? findLesson(resumeId) : undefined;
   const allDone = doneCount === allLessons.length;
+  const resumeLocked = resume ? !unlocked && !resume.lesson.free : false;
+
+  const says =
+    doneCount === 0
+      ? `我是${GUIDE_NAME}，每課只要幾分鐘，我們從第一課開始吧！`
+      : allDone
+        ? '全部上完了，真厲害！去領你的結業證書吧。'
+        : `你已經上完 ${doneCount} 課了，今天也來一課吧！`;
 
   return (
-    <ScrollView contentContainerStyle={[styles.page, { paddingTop: insets.top + 16, paddingBottom: insets.bottom + 32 }]}>
-      <View style={styles.header}>
-        <T size="title" bold color={colors.primaryDark}>
-          {APP_NAME}
-        </T>
-        <Link href="/settings" asChild>
-          <Pressable accessibilityRole="button" accessibilityLabel="設定" style={styles.settings}>
-            <T size="large">⚙️</T>
-          </Pressable>
-        </Link>
-      </View>
-
-      <Guide
-        says={
-          doneCount === 0
-            ? '你好！我會一課一課陪你認識 AI，每課只要幾分鐘。我們從第一課開始吧！'
-            : allDone
-              ? '你把全部課程都上完了，真厲害！去領你的結業證書吧。'
-              : `你已經上完 ${doneCount} 課了，今天也來一課吧！`
-        }
-      />
-
-      <Card style={{ gap: 12 }}>
-        <T size="small" color={colors.muted}>
-          學習進度 {doneCount} / {allLessons.length} 課
-        </T>
-        <View style={styles.track}>
-          <View style={[styles.bar, { width: `${(doneCount / allLessons.length) * 100}%` }]} />
+    <ScrollView contentContainerStyle={{ paddingBottom: insets.bottom + 40 }} showsVerticalScrollIndicator={false}>
+      <LinearGradient colors={heroGradient} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={[styles.hero, { paddingTop: insets.top + 12 }]}>
+        <View style={styles.bubbleA} />
+        <View style={styles.bubbleB} />
+        <View style={styles.topRow}>
+          <Text style={styles.brand}>{APP_NAME}</Text>
+          <PressableScale accessibilityRole="button" accessibilityLabel="設定" onPress={() => router.push('/settings')} style={styles.iconBtn}>
+            <Text style={{ fontSize: 18 }}>⚙️</Text>
+            <Text style={styles.iconLabel}>設定</Text>
+          </PressableScale>
         </View>
-        {resume && <BigButton label={doneCount === 0 ? '開始第一課' : `繼續：${resume.title}`} onPress={() => router.push(`/lesson/${resume.id}`)} />}
-        {allDone && <BigButton label="領取結業證書" onPress={() => router.push('/certificate')} />}
-      </Card>
+        <View style={styles.heroRow}>
+          <Float>
+            <Robot size={108} mood={allDone ? 'cheer' : 'happy'} />
+          </Float>
+          <View style={{ flex: 1, gap: 4 }}>
+            <T size="large" bold color="#fff">
+              {greeting()}！
+            </T>
+            <T color="rgba(255,255,255,0.92)">{says}</T>
+          </View>
+        </View>
+      </LinearGradient>
 
-      {!unlocked && (
-        <Pressable accessibilityRole="button" onPress={() => router.push('/unlock')} style={styles.promo}>
-          <T bold color={colors.accent}>
-            🔓 前 6 課免費試看（第 1 單元和第 2 單元前兩課）
-          </T>
-          <T size="small">解鎖全部 6 個單元、24 課，一次買斷，之後不再收費。</T>
-        </Pressable>
-      )}
-
-      {units.map((u) => {
-        const done = u.lessons.filter((l) => completed[l.id]).length;
-        const open = unlocked || u.lessons.some((l) => l.free);
-        return (
-          <Pressable key={u.id} accessibilityRole="button" onPress={() => router.push(`/unit/${u.id}`)} style={styles.unit}>
-            <View style={{ flex: 1, gap: 4 }}>
-              <T size="small" color={colors.muted}>
-                第 {u.id} 單元・{done} / {u.lessons.length} 課
-              </T>
-              <T size="large" bold>
-                {u.title}
-              </T>
+      <View style={styles.body}>
+        <FadeIn>
+          <Card style={styles.resumeCard}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+              <ProgressRing progress={doneCount / allLessons.length} color={colors.primary} track={colors.primarySoft} size={84} stroke={9}>
+                <T bold color={colors.primaryDark}>
+                  {Math.round((doneCount / allLessons.length) * 100)}%
+                </T>
+              </ProgressRing>
+              <View style={{ flex: 1, gap: 2 }}>
+                <T size="small" color={colors.muted}>
+                  {allDone ? '課程進度' : doneCount === 0 ? '第一課' : '接著上'}
+                </T>
+                {allDone ? (
+                  <T size="large" bold>
+                    {allLessons.length} 課全部完成
+                  </T>
+                ) : (
+                  resume && (
+                    <>
+                      <T size="large" bold numberOfLines={2}>
+                        {resume.lesson.title}
+                      </T>
+                      <T size="small" color={colors.muted}>
+                        第 {resume.unit.id} 單元・第 {resume.index + 1} 課
+                      </T>
+                    </>
+                  )
+                )}
+              </View>
             </View>
-            <T size="large">{done === u.lessons.length ? '✅' : open ? '›' : '🔒'}</T>
-          </Pressable>
-        );
-      })}
+            {allDone ? (
+              <BigButton icon="🎓" label="領取結業證書" onPress={() => router.push('/certificate')} />
+            ) : (
+              resume && (
+                <BigButton
+                  icon={resumeLocked ? '🔓' : '▶️'}
+                  label={resumeLocked ? '解鎖後繼續上課' : doneCount === 0 ? '開始第一課' : '繼續上課'}
+                  onPress={() => router.push(resumeLocked ? '/unlock' : `/lesson/${resume.lesson.id}`)}
+                />
+              )
+            )}
+          </Card>
+        </FadeIn>
+
+        {!unlocked && (
+          <FadeIn delay={80}>
+            <PressableScale accessibilityRole="button" onPress={() => router.push('/unlock')} style={styles.promo}>
+              <Text style={{ fontSize: 32 }}>🎁</Text>
+              <View style={{ flex: 1, gap: 2 }}>
+                <T bold color={colors.accent}>
+                  前 6 課免費試看
+                </T>
+                <T size="small">解鎖全部 24 課只要 {price}，一次買斷不訂閱。</T>
+              </View>
+              <T size="large" color={colors.accent}>
+                ›
+              </T>
+            </PressableScale>
+          </FadeIn>
+        )}
+
+        <T size="large" bold style={{ marginTop: 8 }}>
+          課程單元
+        </T>
+
+        {units.map((u, i) => {
+          const t = unitThemes[u.id];
+          const done = u.lessons.filter((l) => completed[l.id]).length;
+          const freeCount = u.lessons.filter((l) => l.free).length;
+          const finished = done === u.lessons.length;
+          const locked = !unlocked && freeCount === 0;
+          return (
+            <FadeIn key={u.id} delay={120 + i * 50}>
+              <PressableScale
+                accessibilityRole="button"
+                accessibilityLabel={`第 ${u.id} 單元，${u.title}，完成 ${done} 課，共 ${u.lessons.length} 課${locked ? '，需要解鎖' : ''}`}
+                onPress={() => router.push(`/unit/${u.id}`)}
+                style={styles.unit}
+              >
+                <View style={[styles.unitIcon, { backgroundColor: t.soft }]}>
+                  <Text style={{ fontSize: 30 }}>{t.icon}</Text>
+                </View>
+                <View style={{ flex: 1, gap: 6 }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                    <T size="small" bold color={t.color}>
+                      第 {u.id} 單元
+                    </T>
+                    {!unlocked && freeCount > 0 && <Pill label={freeCount === u.lessons.length ? '免費' : `${freeCount} 課免費`} color={colors.accent} bg={colors.accentSoft} />}
+                  </View>
+                  <T bold>{u.title}</T>
+                  <Bar progress={done / u.lessons.length} color={t.color} track={t.soft} height={8} />
+                </View>
+                <Text style={{ fontSize: 22, opacity: locked ? 1 : 0.6 }}>{finished ? '✅' : locked ? '🔒' : '›'}</Text>
+              </PressableScale>
+            </FadeIn>
+          );
+        })}
+      </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  page: { paddingHorizontal: 20, gap: 18 },
-  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  settings: { width: 56, height: 56, alignItems: 'center', justifyContent: 'center' },
-  track: { height: 12, borderRadius: 6, backgroundColor: colors.primarySoft, overflow: 'hidden' },
-  bar: { height: '100%', backgroundColor: colors.primary },
-  promo: { backgroundColor: '#FDEDE7', borderRadius: radius, padding: 16, gap: 4 },
-  unit: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-    backgroundColor: colors.card,
-    borderRadius: radius,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: colors.border,
-  },
+  hero: { paddingHorizontal: 20, paddingBottom: 56, borderBottomLeftRadius: 32, borderBottomRightRadius: 32, overflow: 'hidden' },
+  bubbleA: { position: 'absolute', width: 220, height: 220, borderRadius: 110, backgroundColor: 'rgba(255,255,255,0.08)', top: -60, right: -60 },
+  bubbleB: { position: 'absolute', width: 140, height: 140, borderRadius: 70, backgroundColor: 'rgba(255,255,255,0.07)', bottom: -40, left: -30 },
+  topRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  brand: { fontSize: 26, fontWeight: '800', color: '#fff', letterSpacing: 1 },
+  iconBtn: { flexDirection: 'row', gap: 6, height: 48, paddingHorizontal: 16, borderRadius: 24, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' },
+  iconLabel: { fontSize: 17, fontWeight: '700', color: colors.primaryDark },
+  heroRow: { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 12 },
+  body: { paddingHorizontal: 20, gap: 14, marginTop: -36 },
+  resumeCard: { gap: 16, ...shadow(3) },
+  promo: { flexDirection: 'row', alignItems: 'center', gap: 14, backgroundColor: colors.accentSoft, borderRadius: radius, padding: 16, borderWidth: 1.5, borderColor: '#F6CDBF' },
+  unit: { flexDirection: 'row', alignItems: 'center', gap: 14, backgroundColor: colors.card, borderRadius: radius, padding: 16, ...shadow(1) },
+  unitIcon: { width: 60, height: 60, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
 });

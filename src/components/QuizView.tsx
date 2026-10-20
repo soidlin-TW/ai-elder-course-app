@@ -1,50 +1,52 @@
 import * as Haptics from 'expo-haptics';
 import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Animated, View } from 'react-native';
 
-import { BigButton, T } from './ui';
+import { Guide } from './Guide';
+import { OptionCard, type OptionState } from './OptionCard';
+import { BigButton, Card, T } from './ui';
 import type { Quiz } from '@/content';
-import { colors, radius } from '@/lib/theme';
+import { useShake } from '@/lib/motion';
 
 export function QuizView({ quiz, onDone }: { quiz: Quiz; onDone: () => void }) {
   const [picked, setPicked] = useState<number | null>(null);
+  const [misses, setMisses] = useState(0);
   const right = picked === quiz.answer;
+  const shake = useShake(misses);
 
   const choose = (i: number) => {
-    if (picked === quiz.answer) return;
-    Haptics.notificationAsync(i === quiz.answer ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning).catch(() => {});
+    if (right) return;
+    const ok = i === quiz.answer;
+    Haptics.notificationAsync(ok ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning).catch(() => {});
+    if (!ok) setMisses((n) => n + 1);
     setPicked(i);
+  };
+
+  const stateOf = (i: number): OptionState => {
+    if (right) return i === quiz.answer ? 'right' : 'dim';
+    if (picked === i) return 'wrong';
+    return 'idle';
   };
 
   return (
     <View style={{ gap: 14 }}>
-      <T size="large" bold>
-        {quiz.question}
-      </T>
-      {quiz.options.map((o, i) => {
-        const style = picked === i ? (i === quiz.answer ? styles.good : styles.bad) : right && i === quiz.answer ? styles.good : styles.idle;
-        return (
-          <Pressable key={o} accessibilityRole="button" onPress={() => choose(i)} style={[styles.option, style]}>
-            <T>{o}</T>
-          </Pressable>
-        );
-      })}
-      {picked != null && (
+      <Card>
+        <T size="large" bold>
+          {quiz.question}
+        </T>
+      </Card>
+      <Animated.View style={[{ gap: 12 }, shake]}>
+        {quiz.options.map((o, i) => (
+          <OptionCard key={o} index={i} text={o} state={stateOf(i)} onPress={() => choose(i)} disabled={right} />
+        ))}
+      </Animated.View>
+      {picked != null && !right && <Guide mood="think" says="不太對喔，沒關係，再選一次看看。" />}
+      {right && (
         <>
-          <T bold color={right ? colors.correct : colors.wrong}>
-            {right ? '答對了！' : '不太對，再選一次看看。'}
-          </T>
-          {right && <T>{quiz.explanation}</T>}
+          <Guide mood="cheer" says={`答對了！${quiz.explanation}`} />
+          <BigButton icon="🎉" label="完成這一課" onPress={onDone} />
         </>
       )}
-      {right && <BigButton label="完成這一課" onPress={onDone} />}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  option: { borderRadius: radius, borderWidth: 2, padding: 16, minHeight: 56 },
-  idle: { backgroundColor: colors.card, borderColor: colors.border },
-  good: { backgroundColor: colors.correctSoft, borderColor: colors.correct },
-  bad: { backgroundColor: colors.wrongSoft, borderColor: colors.wrong },
-});

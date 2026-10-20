@@ -1,21 +1,27 @@
 import * as Haptics from 'expo-haptics';
 import { useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 
 import { Guide } from '../Guide';
-import { BigButton, T } from '../ui';
+import { OptionCard } from '../OptionCard';
+import { BigButton, Card, Pill, T } from '../ui';
 import type { PickBetterInteraction } from '@/content';
-import { colors, radius } from '@/lib/theme';
+import { FadeIn } from '@/lib/motion';
+import { colors } from '@/lib/theme';
 
 export function PickBetter({ data, onDone }: { data: PickBetterInteraction; onDone: () => void }) {
   const [round, setRound] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
+  const [score, setScore] = useState(0);
   const finished = round >= data.rounds.length;
 
   if (finished) {
     return (
       <View style={{ gap: 16 }}>
-        <Guide says={data.outro} />
+        <T size="large" bold style={{ textAlign: 'center' }}>
+          選對 {score} / {data.rounds.length} 題
+        </T>
+        <Guide mood="cheer" says={data.outro} />
         <BigButton label="下一步" onPress={onDone} />
       </View>
     );
@@ -26,35 +32,37 @@ export function PickBetter({ data, onDone }: { data: PickBetterInteraction; onDo
     if (picked != null) return;
     const good = r.options[i].good;
     Haptics.notificationAsync(good ? Haptics.NotificationFeedbackType.Success : Haptics.NotificationFeedbackType.Warning).catch(() => {});
+    if (good) setScore((s) => s + 1);
     setPicked(i);
   };
 
   return (
-    <View style={{ gap: 16 }}>
-      <T>{data.intro}</T>
-      <T size="small" color={colors.muted}>
-        第 {round + 1} / {data.rounds.length} 題
-      </T>
-      <T size="large" bold>
-        {r.situation}
-      </T>
-      {r.options.map((o, i) => {
-        const show = picked != null;
-        const style = show ? (o.good ? styles.good : i === picked ? styles.bad : styles.idle) : styles.idle;
-        return (
-          <Pressable key={o.text} accessibilityRole="button" onPress={() => choose(i)} style={[styles.option, style]}>
-            <T>{(show ? (o.good ? '✔ ' : i === picked ? '✘ ' : '') : '') + o.text}</T>
-          </Pressable>
-        );
-      })}
+    <FadeIn key={round} style={{ gap: 14 }}>
+      {round === 0 && <T>{data.intro}</T>}
+      <Pill label={`第 ${round + 1} / ${data.rounds.length} 題`} />
+      <Card>
+        <T size="large" bold>
+          {r.situation}
+        </T>
+      </Card>
+      {r.options.map((o, i) => (
+        <OptionCard
+          key={o.text}
+          index={i}
+          text={o.text}
+          disabled={picked != null}
+          state={picked == null ? 'idle' : o.good ? 'right' : i === picked ? 'wrong' : 'dim'}
+          onPress={() => choose(i)}
+        />
+      ))}
       {picked != null && (
         <>
           <T bold color={r.options[picked].good ? colors.correct : colors.wrong}>
-            {r.options[picked].good ? '選得好！' : '再想想看，比較好的是綠色那個。'}
+            {r.options[picked].good ? '選得好！' : '比較好的是綠色那個。'}
           </T>
           <T>{r.explain}</T>
           <BigButton
-            label={round + 1 < data.rounds.length ? '下一題' : '完成'}
+            label={round + 1 < data.rounds.length ? '下一題' : '看結果'}
             onPress={() => {
               setPicked(null);
               setRound((n) => n + 1);
@@ -62,13 +70,6 @@ export function PickBetter({ data, onDone }: { data: PickBetterInteraction; onDo
           />
         </>
       )}
-    </View>
+    </FadeIn>
   );
 }
-
-const styles = StyleSheet.create({
-  option: { borderRadius: radius, borderWidth: 2, padding: 16, minHeight: 56 },
-  idle: { backgroundColor: colors.card, borderColor: colors.border },
-  good: { backgroundColor: colors.correctSoft, borderColor: colors.correct },
-  bad: { backgroundColor: colors.wrongSoft, borderColor: colors.wrong },
-});
