@@ -8,7 +8,7 @@ import { BigButton, Card, T } from './ui';
 import type { Quiz } from '@/content';
 import { useShake } from '@/lib/motion';
 
-export function QuizView({ quiz, onDone }: { quiz: Quiz; onDone: () => void }) {
+export function QuizView({ quiz, onDone, doneLabel = '完成這一課' }: { quiz: Quiz; onDone: () => void; doneLabel?: string }) {
   const [picked, setPicked] = useState<number | null>(null);
   const [misses, setMisses] = useState(0);
   const right = picked === quiz.answer;
@@ -44,7 +44,7 @@ export function QuizView({ quiz, onDone }: { quiz: Quiz; onDone: () => void }) {
       {right && (
         <>
           <Guide mood="cheer" says={`答對了！${quiz.explanation}`} />
-          <BigButton icon="🎉" label="完成這一課" onPress={onDone} />
+          <BigButton icon="🎉" label={doneLabel} onPress={onDone} />
         </>
       )}
     </View>

@@ -7,6 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Robot } from '@/components/Robot';
 import { BigButton, Card, StickyFooter, T } from '@/components/ui';
 import { allLessons, units } from '@/content';
+import { missions, promptCount, scamKit } from '@/content/extras';
 import { FadeIn, Float, PressableScale } from '@/lib/motion';
 import { usePurchase } from '@/lib/purchase';
 import { useStore } from '@/lib/store';
@@ -14,9 +15,11 @@ import { colors, heroGradient, radius, shadow, unitThemes } from '@/lib/theme';
 
 const PERKS = [
   { icon: '📚', title: `全部 ${allLessons.length} 課`, text: '從「AI 是什麼」學到「看穿 AI 詐騙」' },
-  { icon: '🛡️', title: '防詐專章', text: '認出假聲音、假影片，也能教爸媽' },
+  { icon: '📋', title: `${promptCount} 個提問範本`, text: '複製貼上就能用，生活大小事都有' },
+  { icon: '🕵️', title: `${scamKit.scenarios.length} 題防詐練習`, text: '真實常見情境，練到一眼看穿' },
+  { icon: '🎯', title: `${missions.length} 個生活任務`, text: '學完馬上用在生活裡' },
   { icon: '🔊', title: '大字又會朗讀', text: '眼睛累了，用聽的也能學' },
-  { icon: '💳', title: '一次買斷', text: '不訂閱、不自動扣款，新課免費更新' },
+  { icon: '💳', title: '一次買斷', text: '不訂閱、不自動扣款，新內容免費更新' },
 ];
 
 export default function Unlock() {

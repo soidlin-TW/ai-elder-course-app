@@ -13,6 +13,11 @@ type PersistedState = {
   fontScale: FontScale;
   speechRate: SpeechRate;
   reviewRequested: boolean;
+  missionsDone: Record<string, true>;
+  familyQuestion: string;
+  /** Daily review: last day finished (YYYY-MM-DD, local) and the run of consecutive days. */
+  reviewDay?: string;
+  reviewStreak: number;
 };
 
 const initialState: PersistedState = {
@@ -21,6 +26,9 @@ const initialState: PersistedState = {
   fontScale: 1.2,
   speechRate: 0.8,
   reviewRequested: false,
+  missionsDone: {},
+  familyQuestion: '',
+  reviewStreak: 0,
 };
 
 type Store = PersistedState & {
@@ -31,7 +39,14 @@ type Store = PersistedState & {
   setFontScale: (scale: FontScale) => void;
   setSpeechRate: (rate: SpeechRate) => void;
   setReviewRequested: () => void;
+  toggleMission: (key: string) => void;
+  setFamilyQuestion: (q: string) => void;
+  finishReview: () => void;
 };
+
+export function dayKey(d = new Date()): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
 
 const StoreContext = createContext<Store | null>(null);
 
@@ -66,6 +81,22 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       setFontScale: (fontScale) => update({ fontScale }),
       setSpeechRate: (speechRate) => update({ speechRate }),
       setReviewRequested: () => update({ reviewRequested: true }),
+      toggleMission: (key) =>
+        update((s) => {
+          const next = { ...s.missionsDone };
+          if (next[key]) delete next[key];
+          else next[key] = true;
+          return { missionsDone: next };
+        }),
+      setFamilyQuestion: (familyQuestion) => update({ familyQuestion }),
+      finishReview: () =>
+        update((s) => {
+          const today = dayKey();
+          if (s.reviewDay === today) return {};
+          const y = new Date();
+          y.setDate(y.getDate() - 1);
+          return { reviewDay: today, reviewStreak: s.reviewDay === dayKey(y) ? s.reviewStreak + 1 : 1 };
+        }),
     }),
     [state, ready, update],
   );

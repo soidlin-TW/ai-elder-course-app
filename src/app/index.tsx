@@ -10,8 +10,15 @@ import { allLessons, findLesson, units } from '@/content';
 import { APP_NAME, GUIDE_NAME } from '@/lib/config';
 import { FadeIn, Float, PressableScale } from '@/lib/motion';
 import { usePurchase } from '@/lib/purchase';
-import { useStore } from '@/lib/store';
+import { dayKey, useStore } from '@/lib/store';
 import { colors, heroGradient, radius, shadow, unitThemes } from '@/lib/theme';
+
+const TOOLS = [
+  { href: '/prompts', icon: '📋', title: '提問範本', text: '40 個複製就能用的問法', bg: '#E3EDFB' },
+  { href: '/scam', icon: '🛡️', title: '防詐工具箱', text: '165、暗號卡、情境練習', bg: '#FBE6E3' },
+  { href: '/guides', icon: '📱', title: 'AI 上手指南', text: '一步步裝好第一個 AI', bg: '#E4F2E4' },
+  { href: '/glossary', icon: '📖', title: 'AI 小字典', text: '30 個名詞白話解釋', bg: '#FCEEDF' },
+] as const;
 
 function greeting() {
   const h = new Date().getHours();
@@ -20,7 +27,7 @@ function greeting() {
 
 export default function Home() {
   const insets = useSafeAreaInsets();
-  const { ready, completed, lastLessonId, unlocked } = useStore();
+  const { ready, completed, lastLessonId, unlocked, reviewDay, reviewStreak } = useStore();
   const { price } = usePurchase();
   if (!ready) return null;
 
@@ -108,6 +115,38 @@ export default function Home() {
           </Card>
         </FadeIn>
 
+        <FadeIn delay={60}>
+          <PressableScale accessibilityRole="button" accessibilityLabel="每日複習" onPress={() => router.push('/review')} style={styles.review}>
+            <Text style={{ fontSize: 34 }}>{reviewDay === dayKey() ? '🔥' : '📝'}</Text>
+            <View style={{ flex: 1, gap: 2 }}>
+              <T bold>{reviewDay === dayKey() ? `今天複習完了・連續 ${reviewStreak} 天` : '每日複習 3 題'}</T>
+              <T size="small" color={colors.muted}>
+                {doneCount === 0 ? '上完第一課就能開始' : '每天幾分鐘，學過的不會忘'}
+              </T>
+            </View>
+            <T size="large" color={colors.muted}>
+              ›
+            </T>
+          </PressableScale>
+        </FadeIn>
+
+        <T size="large" bold style={{ marginTop: 8 }}>
+          實用工具箱
+        </T>
+        <View style={styles.tools}>
+          {TOOLS.map((tool, i) => (
+            <FadeIn key={tool.href} delay={100 + i * 40} style={styles.toolCell}>
+              <PressableScale accessibilityRole="button" accessibilityLabel={tool.title} onPress={() => router.push(tool.href)} style={[styles.tool, { backgroundColor: tool.bg }]}>
+                <Text style={{ fontSize: 34 }}>{tool.icon}</Text>
+                <T bold>{tool.title}</T>
+                <T size="small" color={colors.muted}>
+                  {tool.text}
+                </T>
+              </PressableScale>
+            </FadeIn>
+          ))}
+        </View>
+
         {!unlocked && (
           <FadeIn delay={80}>
             <PressableScale accessibilityRole="button" onPress={() => router.push('/unlock')} style={styles.promo}>
@@ -116,7 +155,7 @@ export default function Home() {
                 <T bold color={colors.accent}>
                   前 6 課免費試看
                 </T>
-                <T size="small">解鎖全部 24 課只要 {price}，一次買斷不訂閱。</T>
+                <T size="small">解鎖 24 課、40 個提問範本和防詐練習，只要 {price}，一次買斷。</T>
               </View>
               <T size="large" color={colors.accent}>
                 ›
@@ -178,6 +217,10 @@ const styles = StyleSheet.create({
   body: { paddingHorizontal: 20, gap: 14, marginTop: -36 },
   resumeCard: { gap: 16, ...shadow(3) },
   promo: { flexDirection: 'row', alignItems: 'center', gap: 14, backgroundColor: colors.accentSoft, borderRadius: radius, padding: 16, borderWidth: 1.5, borderColor: '#F6CDBF' },
+  review: { flexDirection: 'row', alignItems: 'center', gap: 14, backgroundColor: colors.goldSoft, borderRadius: radius, padding: 16 },
+  tools: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 12 },
+  toolCell: { width: '48.5%' },
+  tool: { borderRadius: radius, padding: 16, gap: 4, minHeight: 150 },
   unit: { flexDirection: 'row', alignItems: 'center', gap: 14, backgroundColor: colors.card, borderRadius: radius, padding: 16, ...shadow(1) },
   unitIcon: { width: 60, height: 60, borderRadius: 18, alignItems: 'center', justifyContent: 'center' },
 });
