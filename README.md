@@ -59,3 +59,14 @@ export const lessonImages = {
 - `src/app/`：畫面（首頁、單元、課程、解鎖、設定、結業證書）
 - `src/components/`：講師對話框、互動練習、測驗、分享小卡
 - `src/lib/`：進度儲存、內購、朗讀、設定值、配色
+
+## 隱私與安全
+
+- App 不連任何伺服器，也沒有分析、廣告或追蹤套件。對外動作只有：Apple 內購（StoreKit）、寄信給客服、撥 165、打開隱私權政策網頁。
+- 學習進度、設定和家庭暗號「問題」只存在手機本機（AsyncStorage）；畫面提醒使用者暗號答案不要寫下來。
+- App Store Connect 的「App 隱私權」填「未收集資料」。`app.json` 已附隱私權清單（privacy manifest），宣告不追蹤、不蒐集資料。
+- `npm audit` 的警告都在開發和打包工具（metro、expo CLI、node-forge 等），不會打包進 App；Expo 出修正版時一起升級即可。
+
+## 家人共享
+
+在 App Store Connect 的內購項目頁面打開「家人共享」（開了就不能關）。程式不用改：App 啟動時會讀取 Apple 的購買紀錄，家人共享的購買也包含在內，家人打開 App 就會自動解鎖，或按「恢復購買」。

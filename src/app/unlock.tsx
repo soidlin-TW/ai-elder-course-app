@@ -19,6 +19,7 @@ const PERKS = [
   { icon: '🕵️', title: `${scamKit.scenarios.length} 題防詐練習`, text: '真實常見情境，練到一眼看穿' },
   { icon: '🎯', title: `${missions.length} 個生活任務`, text: '學完馬上用在生活裡' },
   { icon: '🔊', title: '大字又會朗讀', text: '眼睛累了，用聽的也能學' },
+  { icon: '👨‍👩‍👧', title: '全家一起用', text: '支援家人共享，買一次，家人的 iPhone 也能學' },
   { icon: '💳', title: '一次買斷', text: '不訂閱、不自動扣款，新內容免費更新' },
 ];
 
