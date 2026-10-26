@@ -27,6 +27,7 @@ export default function RootLayout() {
             <Stack.Screen name="settings" options={{ title: '設定' }} />
             <Stack.Screen name="certificate" options={{ title: '結業證書' }} />
             <Stack.Screen name="prompts/index" options={{ title: '提問範本' }} />
+            <Stack.Screen name="prompts/builder" options={{ title: '提問小幫手' }} />
             <Stack.Screen name="scam/index" options={{ title: '防詐工具箱' }} />
             <Stack.Screen name="scam/quiz" options={{ title: '這是詐騙嗎？' }} />
             <Stack.Screen name="guides" options={{ title: 'AI 上手指南' }} />

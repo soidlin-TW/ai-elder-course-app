@@ -13,9 +13,23 @@ export default function Prompts() {
   return (
     <ScrollView contentContainerStyle={styles.page}>
       <Guide says={`這裡有 ${promptCount} 個寫好的問法。挑一個，換掉【括號】裡的字，複製貼到 AI 就能用。`} />
+      <PressableScale accessibilityRole="button" accessibilityLabel="提問小幫手，四步驟組出好問題" onPress={() => router.push('/prompts/builder')} style={styles.builder}>
+        <Text style={{ fontSize: 40 }}>🧩</Text>
+        <View style={{ flex: 1, gap: 2 }}>
+          <T size="large" bold color="#fff">
+            提問小幫手
+          </T>
+          <T size="small" color="#fff">
+            填四格，組出一句好問題，免費使用
+          </T>
+        </View>
+        <T size="large" bold color="#fff">
+          ›
+        </T>
+      </PressableScale>
       <View style={styles.grid}>
         {promptCategories.map((c, i) => (
-          <FadeIn key={c.id} delay={i * 40} style={styles.cell}>
+          <FadeIn key={c.id} delay={i * 40} style={[styles.cell, i === promptCategories.length - 1 && i % 2 === 0 && { width: '100%' }]}>
             <PressableScale accessibilityRole="button" accessibilityLabel={c.title} onPress={() => router.push(`/prompts/${c.id}`)} style={styles.tile}>
               <Text style={{ fontSize: 36 }}>{c.icon}</Text>
               <T bold style={{ textAlign: 'center' }}>
@@ -40,5 +54,6 @@ const styles = StyleSheet.create({
   page: { padding: 20, gap: 18, paddingBottom: 48 },
   grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 12 },
   cell: { width: '48.5%' },
+  builder: { flexDirection: 'row', alignItems: 'center', gap: 14, backgroundColor: colors.primary, borderRadius: radius, padding: 18, ...shadow(2) },
   tile: { backgroundColor: colors.card, borderRadius: radius, padding: 16, minHeight: 150, alignItems: 'center', justifyContent: 'center', gap: 6, ...shadow(1) },
 });

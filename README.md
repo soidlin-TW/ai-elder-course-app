@@ -75,3 +75,17 @@ export const lessonImages = {
 
 - 音效：`assets/sounds/` 四個短音（答對、再試一次、完成、輕點），用程式合成，沒有版權問題；由 `src/lib/feedback.ts` 播放並搭配震動。設定頁可關閉，手機靜音時不出聲，也不會打斷正在播放的音樂。`expo-audio` 已設定為不要麥克風權限。
 - 語音：用 iPhone 內建的中文（台灣）語音朗讀，不連網。會自動挑手機上最好的聲音；沒有下載增強版時，設定頁會教使用者下載「美佳（增強版）」。點小智的對話框會唸出那句話。
+
+## 參考的高星開源專案（2026-10-26）
+
+| 專案 | 星數 | 借用的做法 | 落在哪裡 |
+|---|---|---|---|
+| f/awesome-chatgpt-prompts | 約 17.5 萬 | 「請你當……」角色扮演提問 | 範本新增「請 AI 扮演」5 個（共 45 個） |
+| microsoft/generative-ai-for-beginners | 約 12.2 萬 | 每課有明確主題、課後延伸行動 | 每課「今天試試看」小挑戰 |
+| microsoft/ML-For-Beginners | 約 9 萬 | 學習目標、課後小測、挑戰 | 每課開頭「這課你會學到」 |
+| dair-ai/Prompt-Engineering-Guide | 約 7.7 萬 | 提示詞四要素：指令、背景、輸入、輸出格式 | 免費的「提問小幫手」（`src/lib/prompt.ts`） |
+| infinitered/ignite | 約 2 萬 | Jest 自動測試、CI | `src/__tests__/content.test.ts`、`.github/workflows/ci.yml` |
+
+## 測試
+
+`npm test` 會檢查所有課文和範本：答案編號是否超出選項、每課有沒有學習目標和小挑戰、免費課是否正確、範本有沒有【可替換】的地方。改 JSON 之後跑一次，就不會把錯字送上架。

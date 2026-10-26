@@ -6,6 +6,10 @@
       "id": "u2l1",
       "title": "常見的聊天 AI 有哪些",
       "free": true,
+      "goals": [
+        "認識三個常見的聊天 AI",
+        "知道下載時要認明開發者"
+      ],
       "imagePrompt": "the small round white robot guide with a teal antenna standing in front of four large friendly app icon tiles in different soft colors arranged in a row, like a shop window, a middle-aged Asian couple looking at them curiously",
       "paragraphs": [
         "現在最常見的聊天 AI 有四個：OpenAI 公司的 ChatGPT、Google 的 Gemini、Anthropic 公司的 Claude，還有微軟的 Copilot。它們都能用中文聊天，基本功能也都可以免費用。",
@@ -59,16 +63,21 @@
         ],
         "answer": 1,
         "explanation": "山寨 App 也可能有好看的圖示和假評論，開發者名稱最可靠。"
-      }
+      },
+      "challenge": "到 App Store 搜尋 ChatGPT、Gemini 或 Claude，看看開發者名稱是不是 OpenAI、Google 或 Anthropic。"
     },
     {
       "id": "u2l2",
       "title": "怎麼問問題最有用",
       "free": true,
+      "goals": [
+        "會用「情況＋要什麼＋什麼樣子」來問",
+        "知道可以先請 AI 扮演一個角色"
+      ],
       "imagePrompt": "the small round white robot guide with a teal antenna holding up three large colorful cards with simple symbols: a person silhouette, a target, a ruler, a middle-aged Asian woman taking notes in a notebook, classroom feeling",
       "paragraphs": [
         "AI 回答得好不好，很大一部分取決於你怎麼問。問得越清楚，答案就越合用。你跟 AI 說的話，有個名字叫「提示詞」。",
-        "好的問法有三個重點：第一，說清楚情況，例如「我 60 歲、膝蓋不好」。第二，說清楚你要什麼，例如「推薦三個散步的地方」。第三，說清楚要什麼樣子，例如「每個用兩句話介紹」。",
+        "好的問法有三個重點：第一，說清楚情況，例如「我 60 歲、膝蓋不好」。第二，說清楚你要什麼，例如「推薦三個散步的地方」。第三，說清楚要什麼樣子，例如「每個用兩句話介紹」。進階一點，還可以先請它扮演一個角色，例如「請你當營養師」，回答會更專業。",
         "不用怕寫太長，AI 不會嫌你囉嗦。把它當成新來的助理：你交代得越清楚，它做得越好。"
       ],
       "example": "只問「推薦晚餐」，AI 會給你一堆不一定適合的菜。改成「我和先生都有高血壓，請推薦三道少鹽、30 分鐘內做得完的晚餐，列出材料」，答案馬上合用很多。",
@@ -131,12 +140,17 @@
         ],
         "answer": 1,
         "explanation": "說情況、說需求、說樣子。中文問就可以，也不用怕太長。"
-      }
+      },
+      "challenge": "用「萬用提問公式」小幫手，組出一句你明天真的會用到的問題。"
     },
     {
       "id": "u2l3",
       "title": "問得不好怎麼重問",
       "free": false,
+      "goals": [
+        "知道答案不滿意可以接著問",
+        "學會三種常用的重問說法"
+      ],
       "imagePrompt": "the small round white robot guide with a teal antenna holding a large pencil with an eraser, happily erasing and rewriting on a big sheet of paper, a middle-aged Asian man giving a thumbs up beside it",
       "paragraphs": [
         "第一次的答案不滿意，很正常。聊天 AI 最大的好處是可以「接著說」，不用重新開始。",
@@ -177,12 +191,17 @@
         ],
         "answer": 1,
         "explanation": "直接接著說就好，它記得前面聊過什麼，會照你的意思修改。"
-      }
+      },
+      "challenge": "下次 AI 的回答不合你意，試著說「再簡單一點」或「換個說法」。"
     },
     {
       "id": "u2l4",
       "title": "免費版和付費版差在哪",
       "free": false,
+      "goals": [
+        "知道免費版就很夠用",
+        "分得出什麼情況才需要付費版"
+      ],
       "imagePrompt": "the small round white robot guide with a teal antenna standing between two simple gift boxes, one small plain box and one bigger box with a ribbon, a middle-aged Asian woman thinking with her hand on her chin, calm mood",
       "paragraphs": [
         "幾個主要的聊天 AI 都有免費版，對日常寫訊息、問問題、查資料來說已經很夠用。建議先用免費版一兩個月，再決定要不要付費。",
@@ -237,7 +256,8 @@
         ],
         "answer": 1,
         "explanation": "刪除 App 不會停止訂閱，一定要到設定裡的訂閱項目取消。"
-      }
+      },
+      "challenge": "先用免費版用滿一個月，再決定要不要付費。"
     }
   ]
 }

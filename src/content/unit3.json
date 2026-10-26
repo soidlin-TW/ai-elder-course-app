@@ -6,6 +6,10 @@
       "id": "u3l1",
       "title": "寫 LINE 訊息和祝福",
       "free": false,
+      "goals": [
+        "會請 AI 幫你寫祝福和問候",
+        "知道把對方的特點寫進去會更有溫度"
+      ],
       "imagePrompt": "a middle-aged Asian woman sitting at a dining table typing on her smartphone with a warm smile, colorful speech bubbles with heart and flower symbols floating up from the phone, the small round white robot guide with a teal antenna sitting on the table helping",
       "paragraphs": [
         "很多人最常用 AI 做的事，就是寫訊息。不知道怎麼開口的話，例如婉拒、道歉、慰問，AI 都可以先幫你打草稿。",
@@ -21,32 +25,50 @@
           {
             "question": "婉拒老同學借錢",
             "answer": "阿明，謝謝你信任我才開口。最近家裡開銷比較吃緊，這次真的幫不上忙，很不好意思。有其他需要幫忙的地方再跟我說。",
-            "followUp": { "question": "再口語一點", "answer": "阿明，你會開口一定是真的需要，但我最近手頭也緊，這次沒辦法，真的歹勢。改天請你喝咖啡！" }
+            "followUp": {
+              "question": "再口語一點",
+              "answer": "阿明，你會開口一定是真的需要，但我最近手頭也緊，這次沒辦法，真的歹勢。改天請你喝咖啡！"
+            }
           },
           {
             "question": "慰問住院的朋友",
             "answer": "聽說你住院了，很擔心你。好好休息、別想太多，有什麼需要隨時跟我說，等你出院一起去吃飯。",
-            "followUp": { "question": "短一點", "answer": "好好休息，我在，需要什麼隨時說。等你出院！" }
+            "followUp": {
+              "question": "短一點",
+              "answer": "好好休息，我在，需要什麼隨時說。等你出院！"
+            }
           },
           {
             "question": "群組裡回錯訊息要道歉",
             "answer": "各位不好意思，剛剛那則訊息傳錯群組了，請大家忽略，打擾了！",
-            "followUp": { "question": "幽默一點", "answer": "抱歉抱歉，手指比腦袋快，剛剛那則請大家當作沒看到 😅" }
+            "followUp": {
+              "question": "幽默一點",
+              "answer": "抱歉抱歉，手指比腦袋快，剛剛那則請大家當作沒看到 😅"
+            }
           }
         ],
         "note": "這是示範對話，不是真的 AI。"
       },
       "quiz": {
         "question": "用 AI 寫好訊息後，送出前最該做什麼？",
-        "options": ["直接送出", "自己讀一遍，改成自己的口氣", "再請 AI 寫十個版本"],
+        "options": [
+          "直接送出",
+          "自己讀一遍，改成自己的口氣",
+          "再請 AI 寫十個版本"
+        ],
         "answer": 1,
         "explanation": "AI 寫的是草稿，自己讀過、改成你的口氣，才不會說出不是你本意的話。"
-      }
+      },
+      "challenge": "這週有人生日或過節嗎？請 AI 幫你寫一段祝福，改成你的語氣再傳出去。"
     },
     {
       "id": "u3l2",
       "title": "規劃旅行和菜單",
       "free": false,
+      "goals": [
+        "會請 AI 排行程和菜單",
+        "知道要把限制條件說清楚"
+      ],
       "imagePrompt": "a middle-aged Asian couple happily looking at a big paper map with small drawings of mountains, a train and a bowl of food, the small round white robot guide with a teal antenna pointing at the map with a little flag",
       "paragraphs": [
         "規劃行程、想菜單這種「要考慮很多條件」的事，正是 AI 的強項。你把條件告訴它，它幾秒鐘就排好一個初版。",
@@ -62,16 +84,28 @@
           {
             "situation": "想帶爸媽去旅行",
             "options": [
-              { "text": "推薦旅遊行程", "good": false },
-              { "text": "帶 80 歲的爸媽去台南兩天一夜，爸爸要坐輪椅，請排無障礙、不趕路的行程", "good": true }
+              {
+                "text": "推薦旅遊行程",
+                "good": false
+              },
+              {
+                "text": "帶 80 歲的爸媽去台南兩天一夜，爸爸要坐輪椅，請排無障礙、不趕路的行程",
+                "good": true
+              }
             ],
             "explain": "年紀、行動狀況、天數講清楚，AI 才會避開不適合的景點。"
           },
           {
             "situation": "想準備一週的晚餐",
             "options": [
-              { "text": "我家三個人，先生糖尿病，請排一週晚餐，每餐 30 分鐘內做好，列出採買清單", "good": true },
-              { "text": "一週菜單", "good": false }
+              {
+                "text": "我家三個人，先生糖尿病，請排一週晚餐，每餐 30 分鐘內做好，列出採買清單",
+                "good": true
+              },
+              {
+                "text": "一週菜單",
+                "good": false
+              }
             ],
             "explain": "人數、健康狀況、時間限制都會影響菜單，還能順便要一份採買清單。"
           }
@@ -80,15 +114,24 @@
       },
       "quiz": {
         "question": "AI 排好的行程，出發前要注意什麼？",
-        "options": ["完全照著走就好", "營業時間和票價要上官方網站確認", "AI 說的一定是最新資料"],
+        "options": [
+          "完全照著走就好",
+          "營業時間和票價要上官方網站確認",
+          "AI 說的一定是最新資料"
+        ],
         "answer": 1,
         "explanation": "AI 的資料可能是舊的，店家營業時間、票價和班次一定要自己確認。"
-      }
+      },
+      "challenge": "請 AI 幫你排一份下週三天的晚餐菜單，記得說出家人的飲食限制。"
     },
     {
       "id": "u3l3",
       "title": "看懂健檢報告和藥袋",
       "free": false,
+      "goals": [
+        "會請 AI 解釋看不懂的報告和藥袋",
+        "知道 AI 的解釋不能取代醫師"
+      ],
       "imagePrompt": "a middle-aged Asian man sitting at home reading a medical report with a relaxed expression, the small round white robot guide with a teal antenna holding a magnifying glass over the paper, a small medicine bag on the table, calm and reassuring mood",
       "paragraphs": [
         "健檢報告上一堆英文縮寫和紅字，看了就緊張。你可以把數值打給 AI，請它用簡單的話解釋每一項代表什麼。",
@@ -104,16 +147,28 @@
           {
             "situation": "看到報告上的紅字",
             "options": [
-              { "text": "我是不是得了糖尿病？要吃什麼藥？", "good": false },
-              { "text": "空腹血糖 118 代表什麼？我回診時該問醫生哪些問題？", "good": true }
+              {
+                "text": "我是不是得了糖尿病？要吃什麼藥？",
+                "good": false
+              },
+              {
+                "text": "空腹血糖 118 代表什麼？我回診時該問醫生哪些問題？",
+                "good": true
+              }
             ],
             "explain": "診斷和開藥要交給醫生；請 AI 幫你理解數字、準備問題最安全。"
           },
           {
             "situation": "想請 AI 看藥袋",
             "options": [
-              { "text": "直接拍整個藥袋，包含姓名、身分證字號和醫院病歷號", "good": false },
-              { "text": "只拍藥名和用法那一塊，問這個藥一般要注意什麼", "good": true }
+              {
+                "text": "直接拍整個藥袋，包含姓名、身分證字號和醫院病歷號",
+                "good": false
+              },
+              {
+                "text": "只拍藥名和用法那一塊，問這個藥一般要注意什麼",
+                "good": true
+              }
             ],
             "explain": "個人資料不需要給 AI，只拍需要的部分就好。"
           }
@@ -122,15 +177,24 @@
       },
       "quiz": {
         "question": "拍健檢報告給 AI 看之前，應該先做什麼？",
-        "options": ["把姓名、身分證字號遮住", "拍得越完整越好", "先付費升級"],
+        "options": [
+          "把姓名、身分證字號遮住",
+          "拍得越完整越好",
+          "先付費升級"
+        ],
         "answer": 0,
         "explanation": "AI 只需要看數值，個人資料先遮住比較安全。"
-      }
+      },
+      "challenge": "拿一張舊的健檢報告，請 AI 用白話解釋一個你看不懂的項目，再把問題記下來問醫師。"
     },
     {
       "id": "u3l4",
       "title": "拍照問 AI",
       "free": false,
+      "goals": [
+        "知道可以拍照請 AI 幫忙看",
+        "知道哪些照片不要傳給 AI"
+      ],
       "imagePrompt": "a middle-aged Asian woman in a garden taking a photo of a flower with her smartphone, the small round white robot guide with a teal antenna peeking from the phone screen with a question mark bubble, sunny and cheerful",
       "paragraphs": [
         "現在的聊天 AI 不只看得懂字，也看得懂照片。拍一張照片，再打一句問題，它就能回答。",
@@ -142,23 +206,55 @@
         "type": "sort",
         "title": "這張照片可以拍給 AI 嗎？",
         "intro": "判斷每一張照片適不適合拍給 AI。",
-        "bins": ["可以拍", "不要拍"],
+        "bins": [
+          "可以拍",
+          "不要拍"
+        ],
         "cards": [
-          { "text": "路邊一朵不知道名字的花", "bin": 0, "reason": "沒有個人資料，很適合" },
-          { "text": "身分證正反面", "bin": 1, "reason": "身分證資料外流可能被拿去冒用" },
-          { "text": "日文的電器說明書", "bin": 0, "reason": "請 AI 翻譯很方便" },
-          { "text": "信用卡正面和背面", "bin": 1, "reason": "卡號和背面三碼被看到就能被盜刷" },
-          { "text": "冰箱裡的剩菜和食材", "bin": 0, "reason": "可以問能煮什麼菜" },
-          { "text": "網路銀行的登入畫面", "bin": 1, "reason": "帳號密碼絕對不要給任何人或 AI" }
+          {
+            "text": "路邊一朵不知道名字的花",
+            "bin": 0,
+            "reason": "沒有個人資料，很適合"
+          },
+          {
+            "text": "身分證正反面",
+            "bin": 1,
+            "reason": "身分證資料外流可能被拿去冒用"
+          },
+          {
+            "text": "日文的電器說明書",
+            "bin": 0,
+            "reason": "請 AI 翻譯很方便"
+          },
+          {
+            "text": "信用卡正面和背面",
+            "bin": 1,
+            "reason": "卡號和背面三碼被看到就能被盜刷"
+          },
+          {
+            "text": "冰箱裡的剩菜和食材",
+            "bin": 0,
+            "reason": "可以問能煮什麼菜"
+          },
+          {
+            "text": "網路銀行的登入畫面",
+            "bin": 1,
+            "reason": "帳號密碼絕對不要給任何人或 AI"
+          }
         ],
         "outro": "被陌生人看到會擔心的，就不要拍給 AI。"
       },
       "quiz": {
         "question": "下面哪一張照片「不適合」拍給 AI？",
-        "options": ["看不懂的英文菜單", "存摺封面和帳號", "陽台上生病的盆栽"],
+        "options": [
+          "看不懂的英文菜單",
+          "存摺封面和帳號",
+          "陽台上生病的盆栽"
+        ],
         "answer": 1,
         "explanation": "存摺帳號屬於重要的財務資料，不要拍給 AI。"
-      }
+      },
+      "challenge": "拍一張家裡植物或路邊的花，問 AI「這是什麼植物？怎麼照顧？」"
     }
   ]
 }

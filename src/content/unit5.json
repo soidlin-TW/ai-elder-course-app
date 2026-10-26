@@ -6,6 +6,10 @@
       "id": "u5l1",
       "title": "AI 會「一本正經地亂講」",
       "free": false,
+      "goals": [
+        "知道 AI 會一本正經地亂講",
+        "學會查證 AI 答案的方法"
+      ],
       "imagePrompt": "the small round white robot guide with a teal antenna standing confidently at a podium giving a speech, but its speech bubble contains a mix of check marks and one funny upside-down symbol, a middle-aged Asian woman in the audience raising her hand with a gentle questioning look",
       "paragraphs": [
         "第 1 單元說過，AI 是用「猜」的方式回答。所以它有時會編出不存在的事，而且講得頭頭是道，這種情況叫做「AI 幻覺」。",
@@ -66,12 +70,17 @@
         ],
         "answer": 1,
         "explanation": "AI 可能編出不存在的號碼，就算它說「保證正確」也一樣，要上官方網站確認。"
-      }
+      },
+      "challenge": "問 AI 一個你本來就知道答案的問題，看看它答得對不對。"
     },
     {
       "id": "u5l2",
       "title": "假聲音、假影片詐騙",
       "free": false,
+      "goals": [
+        "認得出假聲音、假影片詐騙",
+        "知道接到可疑電話先掛斷再查證"
+      ],
       "imagePrompt": "a middle-aged Asian woman holding a smartphone to her ear with a cautious expression, a shadowy cartoon mask floating near the phone, the small round white robot guide with a teal antenna holding up a large shield with a check mark to protect her, not scary, gentle colors",
       "paragraphs": [
         "現在的 AI 只要幾秒鐘的錄音，就能模仿一個人的聲音；只要幾張照片，就能做出這個人在說話的假影片。詐騙集團已經在用這些技術。",
@@ -138,12 +147,17 @@
         ],
         "answer": 1,
         "explanation": "AI 可以模仿聲音，照片也能造假。自己撥原本的號碼確認最可靠。"
-      }
+      },
+      "challenge": "今天就跟家人約好一個「防詐暗號」，用防詐小幫手做成小卡傳到家族群組。"
     },
     {
       "id": "u5l3",
       "title": "哪些個資不該給 AI",
       "free": false,
+      "goals": [
+        "分得出哪些個資不能給 AI",
+        "知道怎麼把資料「去識別化」再問"
+      ],
       "imagePrompt": "a cozy wooden treasure chest with a lock, labeled with simple icons of an ID card, a key and a bank card, the small round white robot guide with a teal antenna politely holding up its hands saying no, a middle-aged Asian man smiling and keeping the chest closed",
       "paragraphs": [
         "你跟 AI 說的話，可能被保存在對方公司的伺服器上，有些服務還會拿來改進 AI。所以要把 AI 當成「不熟的人」：好用，但不要什麼都說。",
@@ -202,12 +216,17 @@
         ],
         "answer": 1,
         "explanation": "驗證碼是登入帳號的鑰匙，給了別人帳號就可能被盜。"
-      }
+      },
+      "challenge": "檢查一下：你曾經貼給 AI 的內容裡，有沒有身分證號碼、帳號或地址？"
     },
     {
       "id": "u5l4",
       "title": "教爸媽和朋友防詐",
       "free": false,
+      "goals": [
+        "會用簡單的話教家人防詐",
+        "知道 165 反詐騙專線"
+      ],
       "imagePrompt": "a warm family scene: a middle-aged Asian woman showing her elderly parents something on a smartphone at a dining table, everyone smiling, the small round white robot guide with a teal antenna holding a small heart, soft evening light",
       "paragraphs": [
         "學會之後，最有價值的事是教身邊的人。長輩和朋友不一定會上課，但會聽你說。",
@@ -262,7 +281,8 @@
         ],
         "answer": 1,
         "explanation": "AI 能模仿聲音，但不知道只有家人才知道的暗號。"
-      }
+      },
+      "challenge": "把 165 存進手機通訊錄，也幫爸媽或長輩存一次。"
     }
   ]
 }

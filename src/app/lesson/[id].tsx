@@ -107,6 +107,14 @@ export default function LessonScreen() {
               {lesson.title}
             </T>
             <LessonImage lessonId={lesson.id} unitId={unit.id} />
+            <Card style={[styles.goals, { backgroundColor: t.soft }]}>
+              <T size="small" bold color={colors.primaryDark}>
+                🎯 這課你會學到
+              </T>
+              {lesson.goals.map((g) => (
+                <T key={g}>✓ {g}</T>
+              ))}
+            </Card>
             <PressableScale accessibilityRole="button" accessibilityLabel={speaking ? '停止朗讀' : '唸給我聽'} onPress={toggleSpeak} style={[styles.listen, speaking && { backgroundColor: t.color }]}>
               <Text style={{ fontSize: 22 }}>{speaking ? '⏹' : '🔊'}</Text>
               <T bold color={speaking ? '#fff' : colors.primaryDark}>
@@ -161,6 +169,12 @@ export default function LessonScreen() {
                 你已經上完 {doneCount} / {allLessons.length} 課
               </T>
             </View>
+            <Card style={[styles.challenge]}>
+              <T size="small" bold color={colors.primaryDark}>
+                🌱 今天試試看
+              </T>
+              <T>{lesson.challenge}</T>
+            </Card>
             <T bold>把今天學到的一句話分享給家人：</T>
             <ShareCard heading={`今天學到：${lesson.title}`} body={takeaway(lesson)} />
             {allDone ? (
@@ -197,6 +211,8 @@ const styles = StyleSheet.create({
   top: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingBottom: 10, backgroundColor: colors.background },
   close: { width: 48, height: 48, borderRadius: 24, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F3ECE2' },
   dots: { flexDirection: 'row', gap: 6 },
+  goals: { gap: 6 },
+  challenge: { gap: 8, borderLeftWidth: 6, borderLeftColor: colors.accent },
   dot: { flex: 1, height: 8, borderRadius: 4 },
   page: { padding: 20, paddingTop: 8, paddingBottom: 40 },
   stack: { gap: 18 },

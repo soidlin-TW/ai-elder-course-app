@@ -7,6 +7,7 @@ import { ProgressRing } from '@/components/ProgressRing';
 import { Robot } from '@/components/Robot';
 import { Bar, BigButton, Card, Pill, T } from '@/components/ui';
 import { allLessons, findLesson, units } from '@/content';
+import { promptCount } from '@/content/extras';
 import { APP_NAME, GUIDE_NAME } from '@/lib/config';
 import { FadeIn, Float, PressableScale } from '@/lib/motion';
 import { usePurchase } from '@/lib/purchase';
@@ -14,7 +15,7 @@ import { dayKey, useStore } from '@/lib/store';
 import { colors, heroGradient, radius, shadow, unitThemes } from '@/lib/theme';
 
 const TOOLS = [
-  { href: '/prompts', icon: '📋', title: '提問範本', text: '40 個複製就能用的問法', bg: '#E3EDFB' },
+  { href: '/prompts', icon: '📋', title: '提問範本', text: `${promptCount} 個範本＋提問小幫手`, bg: '#E3EDFB' },
   { href: '/scam', icon: '🛡️', title: '防詐工具箱', text: '165、暗號卡、情境練習', bg: '#FBE6E3' },
   { href: '/guides', icon: '📱', title: 'AI 上手指南', text: '一步步裝好第一個 AI', bg: '#E4F2E4' },
   { href: '/glossary', icon: '📖', title: 'AI 小字典', text: '30 個名詞白話解釋', bg: '#FCEEDF' },
@@ -155,7 +156,7 @@ export default function Home() {
                 <T bold color={colors.accent}>
                   前 6 課免費試看
                 </T>
-                <T size="small">解鎖 24 課、40 個提問範本和防詐練習，只要 {price}，一次買斷。</T>
+                <T size="small">解鎖 {allLessons.length} 課、{promptCount} 個提問範本和防詐練習，只要 {price}，一次買斷。</T>
               </View>
               <T size="large" color={colors.accent}>
                 ›

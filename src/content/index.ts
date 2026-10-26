@@ -64,11 +64,15 @@ export type Lesson = {
   id: string;
   title: string;
   free: boolean;
+  /** 「這課你會學到」: two short outcomes shown before reading. */
+  goals: string[];
   imagePrompt: string;
   paragraphs: string[];
   example: string;
   interaction: Interaction;
   quiz: Quiz;
+  /** 「今天試試看」: one small real-life action shown after the lesson. */
+  challenge: string;
 };
 
 export type Unit = {

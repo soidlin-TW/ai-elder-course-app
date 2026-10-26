@@ -6,6 +6,10 @@
       "id": "u6l1",
       "title": "AI 會不會取代我的工作",
       "free": false,
+      "goals": [
+        "知道 AI 比較可能改變工作，而不是取代人",
+        "想得出 AI 能幫你省力的地方"
+      ],
       "imagePrompt": "a middle-aged Asian office worker and the small round white robot guide with a teal antenna working side by side at the same desk like teammates, the robot handling a stack of papers while the person talks warmly with a customer, bright optimistic mood",
       "paragraphs": [
         "這是很多人最擔心的問題。比較準確的說法是：AI 會取代很多「工作裡的某些事」，而不是直接取代「人」。",
@@ -17,28 +21,64 @@
         "type": "sort",
         "title": "誰比較擅長？",
         "intro": "判斷這些工作比較適合交給 AI，還是需要人來做。",
-        "bins": ["AI 擅長", "人擅長"],
+        "bins": [
+          "AI 擅長",
+          "人擅長"
+        ],
         "cards": [
-          { "text": "把 50 頁報告整理成一頁重點", "bin": 0, "reason": "整理和摘要是 AI 的強項" },
-          { "text": "安慰一位剛失去家人的客戶", "bin": 1, "reason": "同理心和信任需要真人" },
-          { "text": "寫十種不同版本的廣告標語", "bin": 0, "reason": "大量發想草稿 AI 很快" },
-          { "text": "決定公司要不要投資新廠房", "bin": 1, "reason": "重大決定要有人判斷和負責" },
-          { "text": "把會議錄音整理成文字", "bin": 0, "reason": "重複性高的工作適合 AI" },
-          { "text": "帶新人、處理同事間的衝突", "bin": 1, "reason": "人際關係需要經驗和溫度" }
+          {
+            "text": "把 50 頁報告整理成一頁重點",
+            "bin": 0,
+            "reason": "整理和摘要是 AI 的強項"
+          },
+          {
+            "text": "安慰一位剛失去家人的客戶",
+            "bin": 1,
+            "reason": "同理心和信任需要真人"
+          },
+          {
+            "text": "寫十種不同版本的廣告標語",
+            "bin": 0,
+            "reason": "大量發想草稿 AI 很快"
+          },
+          {
+            "text": "決定公司要不要投資新廠房",
+            "bin": 1,
+            "reason": "重大決定要有人判斷和負責"
+          },
+          {
+            "text": "把會議錄音整理成文字",
+            "bin": 0,
+            "reason": "重複性高的工作適合 AI"
+          },
+          {
+            "text": "帶新人、處理同事間的衝突",
+            "bin": 1,
+            "reason": "人際關係需要經驗和溫度"
+          }
         ],
         "outro": "讓 AI 做雜事，你做只有人能做的事。"
       },
       "quiz": {
         "question": "面對 AI，上班族最好的態度是？",
-        "options": ["拒絕使用，假裝它不存在", "學會用它處理雜事，把時間留給需要判斷和人際的工作", "完全交給 AI 做決定"],
+        "options": [
+          "拒絕使用，假裝它不存在",
+          "學會用它處理雜事，把時間留給需要判斷和人際的工作",
+          "完全交給 AI 做決定"
+        ],
         "answer": 1,
         "explanation": "會用 AI 的人，比不會用的人更有競爭力；但判斷和負責還是要靠人。"
-      }
+      },
+      "challenge": "寫下你工作或家務中最花時間的一件事，問 AI「有什麼方法可以更省時？」"
     },
     {
       "id": "u6l2",
       "title": "怎麼跟孩子聊 AI",
       "free": false,
+      "goals": [
+        "會跟孩子、孫子聊 AI",
+        "知道怎麼提醒孩子安全使用"
+      ],
       "imagePrompt": "a middle-aged Asian father and his teenage child sitting together on a sofa looking at a tablet and laughing, the small round white robot guide with a teal antenna sitting on the armrest, warm living room",
       "paragraphs": [
         "孩子可能比你更早開始用 AI，例如用它寫作業、查資料、聊天。與其禁止，不如一起了解。",
@@ -54,22 +94,34 @@
           {
             "question": "幫我寫《小王子》的讀書心得 500 字",
             "answer": "《小王子》是一本充滿哲理的書……（直接給了一篇完整心得）",
-            "followUp": { "question": "改成：不要給我答案，問我三個問題幫我想", "answer": "1. 你覺得小王子為什麼要離開他的星球？2. 書裡哪個大人讓你想到身邊的人？3. 「真正重要的東西是眼睛看不見的」，你會想到什麼？" }
+            "followUp": {
+              "question": "改成：不要給我答案，問我三個問題幫我想",
+              "answer": "1. 你覺得小王子為什麼要離開他的星球？2. 書裡哪個大人讓你想到身邊的人？3. 「真正重要的東西是眼睛看不見的」，你會想到什麼？"
+            }
           }
         ],
         "note": "這是示範對話，不是真的 AI。"
       },
       "quiz": {
         "question": "孩子想用 AI 做作業，比較好的做法是？",
-        "options": ["請 AI 直接寫好交出去", "請 AI 解釋觀念或提問，自己完成作業", "完全禁止使用"],
+        "options": [
+          "請 AI 直接寫好交出去",
+          "請 AI 解釋觀念或提問，自己完成作業",
+          "完全禁止使用"
+        ],
         "answer": 1,
         "explanation": "讓 AI 當家教，而不是代寫，孩子才學得到東西。"
-      }
+      },
+      "challenge": "下次跟孩子或孫子聊天時，問他們：「你們學校有用 AI 嗎？怎麼用的？」"
     },
     {
       "id": "u6l3",
       "title": "怎麼繼續跟上 AI",
       "free": false,
+      "goals": [
+        "知道怎麼持續跟上 AI 的新消息",
+        "會挑可信的資訊來源"
+      ],
       "imagePrompt": "a middle-aged Asian woman walking along a gentle path with small milestone flags, the small round white robot guide with a teal antenna walking beside her carrying a small lantern, sunrise in the background, hopeful mood",
       "paragraphs": [
         "AI 變化很快，但你不需要每個新消息都懂。最好的方法是：每週用 AI 做一件小事，用久了自然就熟。",
@@ -82,25 +134,59 @@
         "title": "哪個消息來源比較可靠？",
         "intro": "點出你覺得「比較可靠」的資訊來源，再按「看答案」。",
         "items": [
-          { "label": "政府 165 反詐騙網站", "emoji": "🏛️", "correct": true, "reveal": "官方資訊，最新詐騙手法都在這" },
-          { "label": "LINE 群組轉傳的「AI 驚人內幕」", "emoji": "📨", "correct": false, "reveal": "來源不明，常是誇大或錯誤" },
-          { "label": "AI 公司的官方網站", "emoji": "🌐", "correct": true, "reveal": "產品功能以官方說明為準" },
-          { "label": "大型新聞媒體的科技報導", "emoji": "📰", "correct": true, "reveal": "有查證流程，相對可靠" },
-          { "label": "陌生人私訊的「AI 賺錢課程」", "emoji": "🎣", "correct": false, "reveal": "很可能是詐騙或高價推銷" }
+          {
+            "label": "政府 165 反詐騙網站",
+            "emoji": "🏛️",
+            "correct": true,
+            "reveal": "官方資訊，最新詐騙手法都在這"
+          },
+          {
+            "label": "LINE 群組轉傳的「AI 驚人內幕」",
+            "emoji": "📨",
+            "correct": false,
+            "reveal": "來源不明，常是誇大或錯誤"
+          },
+          {
+            "label": "AI 公司的官方網站",
+            "emoji": "🌐",
+            "correct": true,
+            "reveal": "產品功能以官方說明為準"
+          },
+          {
+            "label": "大型新聞媒體的科技報導",
+            "emoji": "📰",
+            "correct": true,
+            "reveal": "有查證流程，相對可靠"
+          },
+          {
+            "label": "陌生人私訊的「AI 賺錢課程」",
+            "emoji": "🎣",
+            "correct": false,
+            "reveal": "很可能是詐騙或高價推銷"
+          }
         ],
         "outro": "看來源，再決定信不信。"
       },
       "quiz": {
         "question": "想跟上 AI，最實際的方法是？",
-        "options": ["每週用 AI 做一件小事", "把所有新聞都看完", "等孫子教再說"],
+        "options": [
+          "每週用 AI 做一件小事",
+          "把所有新聞都看完",
+          "等孫子教再說"
+        ],
         "answer": 0,
         "explanation": "持續用一點點，比一次看很多資訊更有效。"
-      }
+      },
+      "challenge": "每天花 5 分鐘做「每日複習」，連續一週試試看。"
     },
     {
       "id": "u6l4",
       "title": "結業：你已經會用 AI 了",
       "free": false,
+      "goals": [
+        "回顧整門課學到的重點",
+        "準備好自己開始用 AI"
+      ],
       "imagePrompt": "a middle-aged Asian woman and man happily holding a graduation certificate together, colorful confetti, the small round white robot guide with a teal antenna wearing a tiny graduation cap and clapping, celebratory warm mood",
       "paragraphs": [
         "恭喜你走完整個課程！回想一下，你已經知道 AI 是什麼、怎麼問問題、可以在生活和工作上做什麼，也知道怎麼不被 AI 詐騙。",
@@ -116,24 +202,42 @@
           {
             "situation": "想請 AI 推薦餐廳",
             "options": [
-              { "text": "推薦餐廳", "good": false },
-              { "text": "週六中午在高雄左營，4 個大人 1 個小孩，預算每人 500 元，推薦 3 家", "good": true }
+              {
+                "text": "推薦餐廳",
+                "good": false
+              },
+              {
+                "text": "週六中午在高雄左營，4 個大人 1 個小孩，預算每人 500 元，推薦 3 家",
+                "good": true
+              }
             ],
             "explain": "說清楚再問。"
           },
           {
             "situation": "AI 告訴你某個藥一天可以吃 4 顆",
             "options": [
-              { "text": "先問醫師或藥師確認", "good": true },
-              { "text": "照 AI 說的吃", "good": false }
+              {
+                "text": "先問醫師或藥師確認",
+                "good": true
+              },
+              {
+                "text": "照 AI 說的吃",
+                "good": false
+              }
             ],
             "explain": "答案要查證，尤其是健康和金錢的事。"
           },
           {
             "situation": "「女兒」傳訊息說換了新號碼，急需借錢",
             "options": [
-              { "text": "先打女兒原本的號碼確認", "good": true },
-              { "text": "女兒有難，趕快匯", "good": false }
+              {
+                "text": "先打女兒原本的號碼確認",
+                "good": true
+              },
+              {
+                "text": "女兒有難，趕快匯",
+                "good": false
+              }
             ],
             "explain": "要錢先回撥。"
           }
@@ -142,10 +246,15 @@
       },
       "quiz": {
         "question": "下面哪一句「不是」這門課的四句口訣？",
-        "options": ["答案要查證", "AI 說的都對", "要錢先回撥"],
+        "options": [
+          "答案要查證",
+          "AI 說的都對",
+          "要錢先回撥"
+        ],
         "answer": 1,
         "explanation": "四句口訣是：說清楚再問、答案要查證、個資不亂給、要錢先回撥。"
-      }
+      },
+      "challenge": "教一位朋友用聊天 AI 問第一個問題，你就是他的 AI 老師了！"
     }
   ]
 }
