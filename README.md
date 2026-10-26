@@ -65,7 +65,9 @@ export const lessonImages = {
 - App 不連任何伺服器，也沒有分析、廣告或追蹤套件。對外動作只有：Apple 內購（StoreKit）、寄信給客服、撥 165、打開隱私權政策網頁。
 - 學習進度、設定和家庭暗號「問題」只存在手機本機（AsyncStorage）；畫面提醒使用者暗號答案不要寫下來。
 - App Store Connect 的「App 隱私權」填「未收集資料」。`app.json` 已附隱私權清單（privacy manifest），宣告不追蹤、不蒐集資料。
-- `npm audit` 的警告都在開發和打包工具（metro、expo CLI、node-forge 等），不會打包進 App；Expo 出修正版時一起升級即可。
+- `npm audit` 的警告都在開發和打包工具（metro、expo CLI、node-forge 等），不會打包進 App；Expo 出修正版時一起升級即可。CI 會在出現「嚴重（critical）」等級的漏洞時失敗。
+- CI 只拿唯讀權限，不保留 GitHub 憑證，安裝套件時不執行套件腳本。
+- 每完成一個階段都做一次資安檢查（Soid 2026-10-26 要求）：有沒有新增網路連線、資料儲存、權限、第三方套件，以及 `npm audit`。
 
 ## 家人共享
 
